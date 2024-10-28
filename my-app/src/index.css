@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Londrina+Solid:wght@100;300;400;900&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-style: normal;
+  height: 100vh;
+  background: radial-gradient(
+      at 21.980550567522773% 29.650507060184793%,
+      hsl(0deg 0% 100%) 0%,
+      hsla(0, 0%, 90.19607843137256%, 0) 100%
+    ),
+    radial-gradient(
+      at 5.675583183471655% 56.09646661582133%,
+      hsl(0deg 0% 100%) 0%,
+      hsla(0, 0%, 78.43137254901961%, 0) 100%
+    ),
+    radial-gradient(
+      at 46.95963957828448% 81.16631764526292%,
+      hsla(0, 0%, 67.05882352941175%, 1) 0%,
+      hsl(0deg 0% 99.79% / 0%) 100%
+    ),
+    radial-gradient(
+      at 24.547757547950756% 51.598496103273405%,
+      hsl(0deg 0% 100%) 0%,
+      hsla(0, 0%, 45.09803921568628%, 0) 100%
+    ),
+    radial-gradient(
+      at 48.834625417466015% 99.61010503814197%,
+      hsla(0, 0%, 90.19607843137256%, 1) 0%,
+      hsla(0, 0%, 90.19607843137256%, 0) 100%
+    ),
+    radial-gradient(
+      at 13.418770287805938% 54.396993215925725%,
+      hsla(0, 0%, 78.43137254901961%, 1) 0%,
+      hsla(0, 0%, 78.43137254901961%, 0) 100%
+    ),
+    radial-gradient(
+      at 82.1907139703395% 98.68780554195669%,
+      hsla(0, 0%, 67.05882352941175%, 1) 0%,
+      hsla(0, 0%, 67.05882352941175%, 0) 100%
+    ),
+    radial-gradient(
+      at 91.3445121317676% 19.543600342422017%,
+      hsl(0deg 0% 100%) 0%,
+      hsla(0, 0%, 45.09803921568628%, 0) 100%
+    ),
+    radial-gradient(
+      at 72.11722378277973% 65.71232820185257%,
+      hsla(0, 0%, 90.19607843137256%, 1) 0%,
+      hsla(0, 0%, 90.19607843137256%, 0) 100%
+    ),
+    radial-gradient(
+      at 74.96403577774726% 74.1335580753314%,
+      hsla(0, 0%, 78.43137254901961%, 1) 0%,
+      hsl(0deg 0% 100% / 0%) 100%
+    );
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__title {
+  margin: 0;
+  padding: 40px 0;
+  font-size: 60px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* /HEADER */
+
+/* MAIN */
+
+/* /MAIN */
+
+/* FOOTER */
+
+/* /FOOTER */
