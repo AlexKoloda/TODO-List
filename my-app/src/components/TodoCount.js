@@ -1,33 +1,28 @@
-import { useState } from "react";
-import { useEffect } from 'react';
- 
- const TodoCount = (props) => {
-  const [countNumber, setCountNumber] = useState(0)
-  const [countText, setCountText] = useState('задач')
-  
-  useEffect(() => {
-    !props.tasks.length ? setCountNumber(0) : setCountNumber(props.tasks.length);
-    
-    switch (true) {
-      case props.tasks.length === 1: 
-      setCountText('задача');
+
+const getCountText = (length) => {
+  let countText = "";
+
+  switch (true) {
+    case length === 1:
+      countText = "задача";
       break;
 
-      case props.tasks.length <= 4:
-      setCountText('задачи')
+    case length <= 4:
+      countText = "задачи";
       break;
 
-      default:
-      setCountText('задач')  
-    }
- }, [props.tasks.length])
-    return (
-      <span 
-      className="footer__text"
-      >
-      {countNumber} {countText}
-      </span> 
-    )
-}  
+    default:
+      countText = "задач";
+  }
+  return countText;
+};
+
+const TodoCount = ({tasks}) => {
+  return (
+    <span className="footer__text">
+      {tasks.length} {getCountText(tasks.length)}
+    </span>
+  );
+};
 
 export default TodoCount;

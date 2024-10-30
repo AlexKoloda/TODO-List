@@ -1,9 +1,8 @@
 import { useState } from "react";
+let id = 0;
 
 const TodoInput = ({ onAddTask }) => {
   const [inputValue, setInputValue] = useState("");
-  let id = 0;
-
   const handleClick = () => {
     if (!inputValue.trim()) {
       return;
@@ -23,9 +22,9 @@ const TodoInput = ({ onAddTask }) => {
     setInputValue(event.target.value);
   };
 
-  const createUniqueId = (id) => {
-    return  id +=1;
-  }
+  const createUniqueId = () => {
+    return (id += 1);
+  };
 
   return (
     <form

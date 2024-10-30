@@ -17,7 +17,7 @@ const Todo = () => {
       <Header />
       <TodoInput onAddTask={handleAddTask} />
       <TodoList tasks = {tasks} setTasks = {setTasks}/>
-      <Footer tasks = {tasks} />
+      <Footer tasks = {tasks} setTasks = {setTasks}/>
     </div>
   );
 };

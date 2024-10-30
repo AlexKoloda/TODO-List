@@ -6,9 +6,9 @@ body {
   font-weight: 500;
   font-style: normal;
   height: 100vh;
-  background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
+  background: -webkit-linear-gradient(174deg, #abd3d8, #acbdca, #aca7bb);
+  background: linear-gradient(179deg, #ffffff, #cad7e1, #acd5ff);
 }
-
 
 /* HEADER */
 .header {
@@ -29,20 +29,22 @@ body {
 
 /* MAIN */
 
-
 .main__container {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   max-width: 500px;
   margin: 0 auto;
-
 }
-
 
 form {
   display: flex;
   border-bottom: 4px solid rgb(188 54 24);
+  transition: 0.2s;
+}
+form:hover {
+  transform: translate(0,-3px);
+  box-shadow: 0 20px 50px 0px rgb(129 191 255);
 }
 
 .main__input {
@@ -53,11 +55,11 @@ form {
   font-style: italic;
   color: rgb(0 0 0 / 70%);
   transition: 0.5s;
-  outline: none;  
+  outline: none;
 }
 
-.main__input:focus{
- background-color:  rgb(242, 249, 255);
+.main__input:focus {
+  background-color: rgb(237 242 245);
 }
 .main__delete,
 .main__submit {
@@ -71,16 +73,9 @@ form {
   cursor: pointer;
 }
 
-
 li .main__submit {
   font-size: 16px;
   padding: 22px;
-}
-
-
-.main__input:hover {
-  background-color: rgb(242, 249, 255);
-  color: black;
 }
 
 .main__delete:active,
@@ -89,13 +84,10 @@ li .main__submit {
 }
 
 .footer__button:hover,
-.main__submit:hover,
-.main__delete:hover  {
+.main__submit:hover {
   background-color: rgb(189, 54, 24);
   color: white;
 }
-
-
 
 .main::after {
   box-shadow: 0px 40px 100px 23px rgba(0, 0, 0, 0.2);
@@ -108,16 +100,17 @@ li .main__submit {
   background-color: white;
   transition: 0.5s;
 
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6,
+    0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6,
+    0 17px 2px -6px rgba(0, 0, 0, 0.2);
 }
 .main__list::before {
   box-shadow: 0px 40px 100px 23px rgba(0, 0, 0, 0.2);
 }
 
-
 .main__item {
   display: flex;
-  font-size: 20px;
+  font-size: 30px;
   transition: 0.5s;
   justify-content: space-between;
   align-items: center;
@@ -126,24 +119,31 @@ li .main__submit {
   padding-left: 5px;
 }
 
-/* .main__item:hover {
-box-shadow: inset 0 100px 0 0 rgb(189, 54, 24);
-color: white;
-} */
+.main__item:hover {
+  box-shadow: inset 0 100px 0 0 rgb(177 209 242);
+  color: white;
+
+  .main__delete {
+    box-shadow: inset 0 100px 0 0 rgb(177 209 242);
+    color: rgb(189, 54, 24);
+    transition: 0.5s;
+  }
+
+  .main__checkbox {
+    box-shadow: inset 0 100px 0 0 rgb(255, 255, 255);
+    color: white;
+    transition: 0.2s;
+  }
+}
 
 .main__text {
-padding: 5px;
-text-align: start;
+  padding: 5px;
+  text-align: start;
 }
 
 .main__text--completed {
   text-decoration: line-through;
   text-emphasis-color: rgba(0, 0, 0, 0.2);
-}
-
-.main__item:hover {
-  color: rgb(0, 0, 0);
-  transition: 0.5s;
 }
 
 .main__checkbox {
@@ -156,8 +156,7 @@ text-align: start;
 }
 
 .main__checkbox:hover {
-  background-color: rgb(242, 249, 255);
-  color: white;
+  background-color: rgb(255, 255, 255);
 }
 
 .main__checkbox:active {
@@ -185,9 +184,9 @@ text-align: start;
 
 .footer__list {
   list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .footer__text {
