@@ -1,8 +1,11 @@
-
 const getCountText = (length) => {
   let countText = "";
 
   switch (true) {
+    case length === 0:
+      countText = "задач";
+      break;
+
     case length === 1:
       countText = "задача";
       break;
@@ -17,7 +20,7 @@ const getCountText = (length) => {
   return countText;
 };
 
-const TodoCount = ({tasks}) => {
+const TodoCount = ({ tasks }) => {
   return (
     <span className="footer__text">
       {tasks.length} {getCountText(tasks.length)}
