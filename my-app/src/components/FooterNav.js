@@ -1,7 +1,10 @@
-const Footer = () => {
+import TodoCount from "./TodoCount";
+
+const Footer = (props) => {
+
   return (
     <nav className="footer__nav">
-      <span className="footer__text">Счетчик</span>
+    <TodoCount tasks = {props.tasks}/>
       <ul className="footer__list">
         <li>
           <button className="footer__button">Все</button>
