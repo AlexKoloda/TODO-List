@@ -42,7 +42,7 @@ body {
 
 form {
   display: flex;
-  border-bottom: 4px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 4px solid rgb(188 54 24);
 }
 
 .main__input {
@@ -53,9 +53,15 @@ form {
   font-style: italic;
   color: rgb(0 0 0 / 70%);
   transition: 0.5s;
+  outline: none;  
 }
 
+.main__input:focus{
+ background-color:  rgb(242, 249, 255);
+}
+.main__delete,
 .main__submit {
+  font-family: "Cormorant Garamond", serif;
   padding: 20px;
   border: none;
   text-transform: uppercase;
@@ -64,32 +70,39 @@ form {
   transition: 0.2s;
   cursor: pointer;
 }
+
+
 li .main__submit {
   font-size: 16px;
-  padding: 23px;
+  padding: 22px;
 }
+
 
 .main__input:hover {
   background-color: rgb(242, 249, 255);
   color: black;
 }
 
+.main__delete:active,
 .main__submit:active {
   transform: scale(0.9);
 }
+
 .footer__button:hover,
-.main__submit:hover {
+.main__submit:hover,
+.main__delete:hover  {
   background-color: rgb(189, 54, 24);
   color: white;
 }
 
 .main__list {
   list-style: none;
-  margin: 0;
-  margin-top: 20px;
+  margin: 20px 0 0;
+  padding: 0;
   background-color: white;
   transition: 0.5s;
   box-shadow: 0px 40px 100px 23px rgba(0, 0, 0, 0.2);
+
 }
 
 .main__item {
@@ -99,7 +112,14 @@ li .main__submit {
   justify-content: space-between;
   align-items: center;
   color: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid black;
+  padding-left: 5px;
 }
+
+/* .main__item:hover {
+box-shadow: inset 0 100px 0 0 rgb(189, 54, 24);
+color: white;
+} */
 
 .main__text {
 padding: 5px;

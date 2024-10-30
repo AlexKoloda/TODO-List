@@ -15,7 +15,7 @@ const Todo = () => {
     <div className="main__container">
       <Header />
       <TodoInput onAddTask={handleAddTask} />
-      <TodoList tasks = {tasks} />
+      <TodoList tasks = {tasks} setTasks = {setTasks}/>
       <Footer />
     </div>
   );
