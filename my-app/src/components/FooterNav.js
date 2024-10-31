@@ -1,5 +1,5 @@
 import TodoCount from "./TodoCount";
-const buttons = ["Все", "Активные", "Завершенные"];
+const buttons = [{text: "Все", type: 'all'}, {text:"Активные", type: 'active'}, {text: "Завершенные", type: 'completed'}];
 
 const Footer = ({ tasks, onDeleteAll, onFilterTask}) => {
 
@@ -7,21 +7,58 @@ const Footer = ({ tasks, onDeleteAll, onFilterTask}) => {
     <nav className="footer__nav">
       <TodoCount tasks={tasks} />
       <ul className="footer__list">
-        {buttons.map((text, index) => {
+        {buttons.map(( button ) => {
           return (
-            <li key={index}>
-              <button className="footer__button">{text}</button>
+            <li key={button.type}>
+              <button 
+              className="footer__button"
+              onClick={() => onFilterTask(tasks.map( (e) => e.isCompleted)) }
+              >{button.text}</button>
             </li>
           );
         })}
         <li>
-          <button className="main__submit" onClick={() => onDeleteAll(tasks.id)}>
+          <button className="main__submit" onClick={() => onDeleteAll()}>
             x
           </button>
         </li>
       </ul>
     </nav>
+    
   );
 };
 
 export default Footer;
+
+
+
+// const App2 = () => {
+//   const multiplier = 3;
+//   const value = 13;
+//   let state = 1;
+
+//   const calculate = (v) => {
+//     state =  v * multiplier;
+//   }
+
+//   TodoList2({
+//     doCalculatins: calculate,
+//     value,
+//   })
+  
+// }
+
+// const TodoList2 = (props) => {
+
+//   const innerVar = 123;
+
+//   const doCalcs = () => {
+//     props.doCalculatins(props.value + innerVar);
+//   }
+
+//   return TodoItem2({doCalculatins: doCalcs});
+// }
+
+// const TodoItem2 = (props) => {
+//   return props.doCalculatins()
+// }

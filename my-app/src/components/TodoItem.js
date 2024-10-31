@@ -1,9 +1,23 @@
-const TodoItem = ({ todo, onHandleDelete, onChangeTask  }) => {
+const TodoItem = ({ todo, onHandleDelete, onChangeTask, /* onEditTask */}) => {
 
+/*   const changeSpan = (todo) => {
+  const editTodo = {...todo};
+  
+  if ( editTodo.isSpan) {
+   editTodo.isSpan = false;
+  } else {
+    editTodo.isSPan = true;    
+  } 
 
-
+    onEditTask(editTodo); 
+ 
+  } 
+ */
   return (
-    <li className="main__item">
+    <li 
+    className="main__item"
+    /* onDoubleClick={() => changeSpan(todo)} */
+    >
       <div
         className={
           !todo.isCompleted ? "main__checkbox" : "main__checkbox--check"
@@ -12,7 +26,6 @@ const TodoItem = ({ todo, onHandleDelete, onChangeTask  }) => {
       ></div>
       <span
         className={!todo.isCompleted ? "main__text" : "main__text--completed"}
-        /* onDoubleClick={() => handleChangeTask (todo)} */
       >
         {todo.text}
       </span>

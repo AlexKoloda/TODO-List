@@ -3,6 +3,7 @@ let id = 0;
 
 const TodoInput = ({ onAddTask }) => {
   const [inputValue, setInputValue] = useState("");
+
   const handleClick = () => {
     if (!inputValue.trim()) {
       return;
@@ -12,6 +13,7 @@ const TodoInput = ({ onAddTask }) => {
       id: createUniqueId(),
       text: inputValue,
       isCompleted: false,
+      isSpan: true,
     };
 
     onAddTask(newTask);
@@ -30,6 +32,7 @@ const TodoInput = ({ onAddTask }) => {
     <form
       onSubmit={(event) => {
         event.preventDefault();
+        handleClick();
       }}
     >
       <input
@@ -39,7 +42,7 @@ const TodoInput = ({ onAddTask }) => {
         value={inputValue}
         onChange={handleChange}
       />
-      <button className="main__submit" type="submit" onClick={handleClick}>
+      <button className="main__submit" type="submit">
         OK
       </button>
     </form>

@@ -16,25 +16,29 @@ const TodoApp = () => {
     setTasks(newTodos);
   };
 
-  const deleteAll = (id) => {
-    const filterTodos = tasks.filter((e) => e.id === id);
-    setTasks(filterTodos);
+  const deleteAll = () => {
+    setTasks([]);
   };
 
   const filterTask = (isCompleted) => {
-    const filterTodos = [];
-    if (isCompleted) {
-      return filterTodos.filter((e) => e.isCompleted === true);
-    }
+  
+  console.log(isCompleted)
+  
+  }
 
-    if (!isCompleted) {
-      return filterTodos.filter((e) => e.isCompleted === false);
-    }
-  };
+/*  const EditTask = (editTodo) => {
+
+ const editTodos = tasks.map ((e) => {
+   return {...e,}
+  })
+
+  setTasks(editTodos)
+
+  } */
 
   const changeTask = (id) => {
-  const completeTodos = tasks.map((e, index) => {
-    if(index === id - 1) {
+  const completeTodos = tasks.map((e) => {
+    if(e.id === id) {
       return{ ...e, isCompleted: !e.isCompleted};
     }
     return e;
@@ -53,8 +57,12 @@ const TodoApp = () => {
         tasks={tasks}
         onHandleDelete={handleDelete}
         onChangeTask={changeTask}
+       /*  onEditTask = {EditTask} */ />
+      <Footer 
+      tasks={tasks} 
+      onDeleteAll={deleteAll} 
+      onFilterTask={filterTask}
       />
-      <Footer tasks={tasks} onDeleteAll={deleteAll} onFilterTask={filterTask} />
     </div>
   );
 };
