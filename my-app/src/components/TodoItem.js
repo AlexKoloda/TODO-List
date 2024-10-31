@@ -1,34 +1,30 @@
-const TodoItem = ({ tasks, setTasks }) => {
-  const handleClickDelete = (task) => {
-    setTasks(tasks.filter((elem) => elem.id !== task.id));
-  };
-  const handleClickComplete = (task) => {
-    if (task.isCompleted) {
-      return;
-    }
-    task.isCompleted = true;
-  };
+const TodoItem = ({ todo, onHandleDelete, onChangeTask  }) => {
 
-  return tasks.map((task) => (
-    <li className="main__item" key={task.id}>
+
+
+  return (
+    <li className="main__item">
       <div
-        className="main__checkbox"
-        onClick={() => handleClickComplete(task)}
+        className={
+          !todo.isCompleted ? "main__checkbox" : "main__checkbox--check"
+        }
+        onClick={() => onChangeTask(todo.id)}
       ></div>
       <span
-        className={!task.isCompleted ? "main__text" : "main__text--completed"}
+        className={!todo.isCompleted ? "main__text" : "main__text--completed"}
+        /* onDoubleClick={() => handleChangeTask (todo)} */
       >
-        {task.text}
+        {todo.text}
       </span>
       <button
         className="main__delete"
         type="submit"
-        onClick={() => handleClickDelete(task)}
+        onClick={() => onHandleDelete(todo.id)}
       >
         x
       </button>
     </li>
-  ));
+  );
 };
 
 export default TodoItem;
