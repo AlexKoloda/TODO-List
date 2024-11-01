@@ -1,7 +1,7 @@
 import { useState } from "react";
 let id = 0;
 
-const TodoInput = ({ onAddTask }) => {
+const TodoInput = ({ onAddTodos }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleClick = () => {
@@ -9,14 +9,13 @@ const TodoInput = ({ onAddTask }) => {
       return;
     }
 
-    const newTask = {
+    const newTodos = {
       id: createUniqueId(),
       text: inputValue,
       isCompleted: false,
-      isSpan: true,
     };
 
-    onAddTask(newTask);
+    onAddTodos(newTodos);
     setInputValue("");
   };
 

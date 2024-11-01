@@ -1,18 +1,16 @@
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ tasks, onHandleDelete, onChangeTask, onEditTask, }) => {
+const TodoList = ({ filtredTodos, onHandleDelete, onChangeTodos }) => {
   return (
     <section className="main">
       <ul className="main__list">
-        {tasks.map((todo) => {
+        {filtredTodos.map((todo) => {
           return (
             <TodoItem
               todo={todo}
-              /* onEditTask = {onEditTask} */
               onHandleDelete={onHandleDelete}
               key={todo.id}
-              onChangeTask={onChangeTask}
-            
+              onChangeTodos={onChangeTodos}
             />
           );
         })}
