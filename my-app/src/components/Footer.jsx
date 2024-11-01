@@ -5,10 +5,10 @@ const buttons = [
   { text: "Завершенные", id: "completed" },
 ];
 
-const Footer = ({ todos, onDeleteAll, onChangeFilter }) => {
+const Footer = ({filtredTodos, onDeleteAll, onChangeFilter }) => {
   return (
     <nav className="footer__nav">
-      <TodoCount length={todos.length} />
+      <TodoCount length={filtredTodos.length} />
       <ul className="footer__list">
         {buttons.map((button) => {
           return (

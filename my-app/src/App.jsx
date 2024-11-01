@@ -2,6 +2,7 @@ import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import FooterDescription from "./components/FooterDescription";
 import { useState } from "react";
 
 const TodoApp = () => {
@@ -62,11 +63,12 @@ const TodoApp = () => {
         onChangeTodos={changeTodos}
       />
       <Footer
-        todos={todos}
+        filtredTodos={filtredTodos}
         onDeleteAll={deleteAll}
         onChangeFilter={changeFilter}
         onChangeTodos={changeTodos}
       />
+      <FooterDescription />
     </div>
   );
 };

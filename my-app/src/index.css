@@ -10,7 +10,13 @@ body {
   background: linear-gradient(179deg, #ffffff, #cad7e1, #acd5ff);
 }
 
+p {
+  padding: 0;
+  margin: 0;
+}
+
 /* HEADER */
+
 .header {
   display: flex;
   justify-content: center;
@@ -42,8 +48,9 @@ form {
   border-bottom: 4px solid rgb(188 54 24);
   transition: 0.2s;
 }
+
 form:hover {
-  transform: translate(0,-3px);
+  transform: translate(0, -3px);
   box-shadow: 0px 12px 20px 0px rgb(129 191 255);
 }
 
@@ -61,6 +68,7 @@ form:hover {
 .main__input:focus {
   background-color: rgb(237 242 245);
 }
+
 .main__delete,
 .main__submit {
   font-family: "Cormorant Garamond", serif;
@@ -99,11 +107,11 @@ li .main__submit {
   padding: 0;
   background-color: white;
   transition: 0.5s;
-
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6,
     0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6,
     0 17px 2px -6px rgba(0, 0, 0, 0.2);
 }
+
 .main__list::before {
   box-shadow: 0px 40px 100px 23px rgba(0, 0, 0, 0.2);
 }
@@ -147,10 +155,9 @@ li .main__submit {
   background-size: 80%;
   background-color: white;
   background-repeat: no-repeat;
-  background-position: center;  
-  background-image: url('./check-icon.png');
+  background-position: center;
+  background-image: url("./check-icon.png");
   background-size: 95%;
-
 }
 
 .main__text {
@@ -177,7 +184,7 @@ li .main__submit {
 }
 
 .main__checkbox:active {
-  background-image: url('./check-icon.png');
+  background-image: url("./check-icon.png");
   background-size: 95%;
   transform: scale(0.8);
   box-shadow: 0px 20px 100px 23px rgb(156 209 255);
@@ -222,7 +229,82 @@ li .main__submit {
   font-family: "Cormorant Garamond", serif;
   font-size: 20px;
 }
+
 .footer__button:active {
   transform: scale(0.9);
 }
+
+.footer__description {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+}
+
+.footer__link {
+  color: rgb(139, 30, 30);
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.footer__link:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: width 0.3s;
+}
+
+.footer__link:hover:after {
+  content: "";
+  width: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  height: 2px; /* Высота линии */
+  background-color: rgb(139, 30, 30);
+  transition: width 0.3s;
+}
+
 /* /FOOTER */
+
+/* MODILE */
+
+@media (320px <=width <=900px) {
+  body {
+    height: 120vh;
+  }
+
+  .main__container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .main__input {
+    font-size: 20px;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  .footer__nav {
+    flex-direction: column;
+  }
+
+  .footer__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+}
+
+/* /MODILE */
