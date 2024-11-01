@@ -1,14 +1,19 @@
-const TodoItem = ({ todo, onHandleDelete, onChangeTodos }) => {
+const TodoItem = ({ todo, onHandleDelete, onChangeTodos, onEditTodos }) => {
   return (
     <li className="main__item">
       <div
         className={
           !todo.isCompleted ? "main__checkbox" : "main__checkbox--check"
         }
-        onClick={() => onChangeTodos(todo.id)}
+        onClick={() => {
+          onChangeTodos(todo.id);
+        }}
       ></div>
       <span
         className={!todo.isCompleted ? "main__text" : "main__text--completed"}
+        onDoubleClick={() => {
+          onEditTodos(todo.id);
+        }}
       >
         {todo.text}
       </span>

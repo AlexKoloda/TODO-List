@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ filtredTodos, onHandleDelete, onChangeTodos }) => {
+const TodoList = ({ filtredTodos, onHandleDelete, onChangeTodos, onEditTodos }) => {
   return (
     <section className="main">
       <ul className="main__list">
@@ -11,6 +11,7 @@ const TodoList = ({ filtredTodos, onHandleDelete, onChangeTodos }) => {
               onHandleDelete={onHandleDelete}
               key={todo.id}
               onChangeTodos={onChangeTodos}
+              onEditTodos = {onEditTodos}
             />
           );
         })}

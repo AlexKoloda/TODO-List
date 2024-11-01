@@ -37,6 +37,20 @@ const TodoApp = () => {
     setTodos(completeTodos);
   };
 
+  const editTodos = (id) => {
+ 
+    const editedTodos = todos.map ((todo) => {
+      if (todo.id === id) {
+        return {...todo, text: 'test'}
+      }
+      return todo;
+    }) 
+
+    setTodos(editedTodos);
+  }
+
+  
+
   const filterTodos = () => {
     switch (curentFilter) {
       case "all":
@@ -61,12 +75,12 @@ const TodoApp = () => {
         filtredTodos={filtredTodos}
         onHandleDelete={handleDelete}
         onChangeTodos={changeTodos}
+        onEditTodos = {editTodos}
       />
       <Footer
         filtredTodos={filtredTodos}
         onDeleteAll={deleteAll}
         onChangeFilter={changeFilter}
-        onChangeTodos={changeTodos}
       />
       <FooterDescription />
     </div>
