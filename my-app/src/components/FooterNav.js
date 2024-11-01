@@ -12,7 +12,7 @@ const Footer = ({ tasks, onDeleteAll, onFilterTask}) => {
             <li key={button.type}>
               <button 
               className="footer__button"
-              onClick={() => onFilterTask(tasks.map( (e) => e.isCompleted)) }
+              onClick={() =>  onFilterTask(button.type)}
               >{button.text}</button>
             </li>
           );
