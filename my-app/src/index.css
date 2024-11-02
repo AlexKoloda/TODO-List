@@ -54,6 +54,12 @@ form:hover {
   box-shadow: 0px 12px 20px 0px rgb(129 191 255);
 }
 
+.main__active--visible:hover{
+  transform: translate(0, -3px);
+  background-color: rgb(189, 54, 24);
+  color: white;
+}
+
 .todo__input {
   flex: 1;
   padding: 20px;
@@ -72,6 +78,26 @@ form:hover {
     background-color: rgb(238 242 245);
   }
 
+}
+
+.main__active {
+visibility: hidden;
+font-family: "Cormorant Garamond", serif;
+    border: 0;
+    background: white;
+    text-transform: uppercase;
+}
+
+.main__active--visible {
+  visibility: visible;
+  font-family: "Cormorant Garamond", serif;
+    border: 0;
+    background: white;
+    text-transform: uppercase;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .main__delete,
@@ -195,12 +221,11 @@ li .main__submit {
   border-bottom: 2px solid rgb(188 54 24);
 }
 
-
-
 .main__text {
   padding: 5px;
   text-align: start;
 }
+
 .main__input--completed {
   padding: 10px;
   outline: none;
@@ -221,6 +246,7 @@ li .main__submit {
   transition: 0.5s;
 
 }
+
 .main__text--completed {
   text-decoration: line-through;
   text-emphasis-color: rgba(0, 0, 0, 0.2);

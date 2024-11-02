@@ -1,7 +1,7 @@
 import { useState } from "react";
 let id = 0;
 
-const TodoInput = ({ onAddTodos }) => {
+const TodoInput = ({ onAddTodos, onChangeAllTodos, todos }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleClick = () => {
@@ -28,6 +28,17 @@ const TodoInput = ({ onAddTodos }) => {
   };
 
   return (
+    <>
+    <button className = {
+      !todos.length ? "main__active" : "main__active--visible"
+    }
+    onClick={(event) => {
+      event.stopPropagation();
+      onChangeAllTodos();
+    }}
+    >
+    отметить все завершенными  
+    </button>  
     <form
       onSubmit={(event) => {
         event.preventDefault();
@@ -45,6 +56,7 @@ const TodoInput = ({ onAddTodos }) => {
         OK
       </button>
     </form>
+    </>
   );
 };
 

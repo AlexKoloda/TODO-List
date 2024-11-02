@@ -37,6 +37,15 @@ const TodoApp = () => {
     setTodos(completedTodos);
   };
 
+  const changeAllTodos = () => {
+    const completedAllTodos = todos.map((todo) => {
+    return { ...todo, isCompleted: !todo.isCompleted }
+    });
+
+    setTodos(completedAllTodos);
+
+  }
+
   const filterTodos = () => {
     switch (curentFilter) {
       case "all":
@@ -71,7 +80,11 @@ const TodoApp = () => {
   return (
     <div className="main__container">
       <Header />
-      <TodoInput onAddTodos={handleAddTodos} />
+      <TodoInput 
+      todos = {todos}
+      onAddTodos={handleAddTodos} 
+      onChangeAllTodos={changeAllTodos}
+      />
       <TodoList
         todos={todos}
         filtredTodos={filtredTodos}
