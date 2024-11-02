@@ -62,7 +62,6 @@ const TodoApp = () => {
   };
 
   const handleEditTodos = (todo) => {
-    console.log(todo);
     const editedTodos = todos.map((t) => {
       if (t.id === todo.id) {
         return todo;
@@ -70,7 +69,6 @@ const TodoApp = () => {
         return t;
       }
     });
-    console.log(editedTodos);
     setTodos(editedTodos);
   };
 
