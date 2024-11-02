@@ -29,33 +29,32 @@ const TodoInput = ({ onAddTodos, onChangeAllTodos, todos }) => {
 
   return (
     <>
-    <button className = {
-      !todos.length ? "main__active" : "main__active--visible"
-    }
-    onClick={(event) => {
-      event.stopPropagation();
-      onChangeAllTodos();
-    }}
-    >
-    отметить все завершенными  
-    </button>  
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        handleClick();
-      }}
-    >
-      <input
-        className="todo__input"
-        type="text"
-        placeholder="Что нужно сделать?"
-        value={inputValue}
-        onChange={handleChange}
-      />
-      <button className="main__submit" type="submit">
-        OK
+      <button
+        className={!todos.length ? "main__active" : "main__active--visible"}
+        onClick={(event) => {
+          event.stopPropagation();
+          onChangeAllTodos();
+        }}
+      >
+        отметить все завершенными
       </button>
-    </form>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleClick();
+        }}
+      >
+        <input
+          className="todo__input"
+          type="text"
+          placeholder="Что нужно сделать?"
+          value={inputValue}
+          onChange={handleChange}
+        />
+        <button className="main__submit" type="submit">
+          OK
+        </button>
+      </form>
     </>
   );
 };

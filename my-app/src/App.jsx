@@ -39,12 +39,11 @@ const TodoApp = () => {
 
   const changeAllTodos = () => {
     const completedAllTodos = todos.map((todo) => {
-    return { ...todo, isCompleted: !todo.isCompleted }
+      return { ...todo, isCompleted: !todo.isCompleted };
     });
 
     setTodos(completedAllTodos);
-
-  }
+  };
 
   const filterTodos = () => {
     switch (curentFilter) {
@@ -63,7 +62,7 @@ const TodoApp = () => {
   };
 
   const handleEditTodos = (todo) => {
-    console.log(todo)
+    console.log(todo);
     const editedTodos = todos.map((t) => {
       if (t.id === todo.id) {
         return todo;
@@ -71,7 +70,7 @@ const TodoApp = () => {
         return t;
       }
     });
-    console.log(editedTodos)
+    console.log(editedTodos);
     setTodos(editedTodos);
   };
 
@@ -80,10 +79,10 @@ const TodoApp = () => {
   return (
     <div className="main__container">
       <Header />
-      <TodoInput 
-      todos = {todos}
-      onAddTodos={handleAddTodos} 
-      onChangeAllTodos={changeAllTodos}
+      <TodoInput
+        todos={todos}
+        onAddTodos={handleAddTodos}
+        onChangeAllTodos={changeAllTodos}
       />
       <TodoList
         todos={todos}
@@ -93,7 +92,7 @@ const TodoApp = () => {
         onEditTodos={handleEditTodos}
       />
       <Footer
-        todos = {todos}
+        todos={todos}
         filtredTodos={filtredTodos}
         onDeleteAll={deleteAll}
         onChangeFilter={changeFilter}

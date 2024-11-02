@@ -8,7 +8,9 @@ const TodoItem = ({ todo, onHandleDelete, onChangeTodos, onEditTodos }) => {
     todosText = (
       <>
         <input
-          className={!todo.isCompleted ? "main__input" : "main__input--completed"}
+          className={
+            !todo.isCompleted ? "main__input" : "main__input--completed"
+          }
           value={todo.text}
           onChange={(e) => {
             onEditTodos({
