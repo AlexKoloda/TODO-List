@@ -7,7 +7,6 @@ const buttons = [
 
 const Footer = ({ todos, filtredTodos, onDeleteAll, onChangeFilter }) => {
   const amountCompleted = todos.filter((todo) => !todo.isCompleted);
-
   const length = amountCompleted.length;
 
   return (
