@@ -1,4 +1,36 @@
+import { useState } from "react";
+
 const TodoItem = ({ todo, onHandleDelete, onChangeTodos, onEditTodos }) => {
+
+  const [isEditing, setIsEditing] = useState(false);
+  let todosText;
+
+ 
+
+ /*  const handleChange = (event) => {
+    setEditValue(event.target.value);
+  }; */
+
+  if (isEditing) {
+     
+    todosText = (
+      <>
+        <input
+          className="main__input"
+          value={todo.text}
+          onChange={(e) => {
+            onEditTodos ({
+              ...todo,
+              text: e.target.value,
+            });
+          }}
+        />
+      </>
+    );
+  } else {
+    todosText = <>{todo.text}</>;
+  }
+
   return (
     <li className="main__item">
       <div
@@ -12,10 +44,10 @@ const TodoItem = ({ todo, onHandleDelete, onChangeTodos, onEditTodos }) => {
       <span
         className={!todo.isCompleted ? "main__text" : "main__text--completed"}
         onDoubleClick={() => {
-          onEditTodos(todo.id);
+          setIsEditing(true);
         }}
       >
-        {todo.text}
+        {todosText}
       </span>
       <button
         className="main__delete"

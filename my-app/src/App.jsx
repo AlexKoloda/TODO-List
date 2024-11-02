@@ -10,7 +10,7 @@ const TodoApp = () => {
   const [curentFilter, setCurrentFilter] = useState("all");
 
   const handleAddTodos = (newTodos) => {
-    setTodos((todo) => [...todo, newTodos]);
+    setTodos((prev) => [...prev, newTodos]);
   };
 
   const handleDelete = (id) => {
@@ -37,20 +37,6 @@ const TodoApp = () => {
     setTodos(completeTodos);
   };
 
-  const editTodos = (id) => {
- 
-    const editedTodos = todos.map ((todo) => {
-      if (todo.id === id) {
-        return {...todo, text: 'test'}
-      }
-      return todo;
-    }) 
-
-    setTodos(editedTodos);
-  }
-
-  
-
   const filterTodos = () => {
     switch (curentFilter) {
       case "all":
@@ -61,7 +47,21 @@ const TodoApp = () => {
 
       case "completed":
         return todos.filter((todo) => todo.isCompleted);
+
+      default:
+        return todos;
     }
+  };
+
+  const handleEditTodos = (todo) => {
+    const editedTodos = todos.map((t) => {
+      if (t.id === todo.id) {
+        return todo;
+      } else {
+        return t;
+      }
+    });
+    setTodos(editedTodos);
   };
 
   const filtredTodos = filterTodos();
@@ -75,7 +75,7 @@ const TodoApp = () => {
         filtredTodos={filtredTodos}
         onHandleDelete={handleDelete}
         onChangeTodos={changeTodos}
-        onEditTodos = {editTodos}
+        onEditTodos={handleEditTodos}
       />
       <Footer
         filtredTodos={filtredTodos}

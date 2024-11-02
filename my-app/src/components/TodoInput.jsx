@@ -35,7 +35,7 @@ const TodoInput = ({ onAddTodos }) => {
       }}
     >
       <input
-        className="main__input"
+        className="todo__input"
         type="text"
         placeholder="Что нужно сделать?"
         value={inputValue}
