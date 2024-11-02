@@ -1,25 +1,17 @@
 import { useState } from "react";
 
 const TodoItem = ({ todo, onHandleDelete, onChangeTodos, onEditTodos }) => {
-
   const [isEditing, setIsEditing] = useState(false);
   let todosText;
 
- 
-
- /*  const handleChange = (event) => {
-    setEditValue(event.target.value);
-  }; */
-
   if (isEditing) {
-     
     todosText = (
       <>
         <input
           className="main__input"
           value={todo.text}
           onChange={(e) => {
-            onEditTodos ({
+            onEditTodos({
               ...todo,
               text: e.target.value,
             });
