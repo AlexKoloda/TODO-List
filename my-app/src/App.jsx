@@ -80,6 +80,7 @@ const TodoApp = () => {
         onEditTodos={handleEditTodos}
       />
       <Footer
+        todos = {todos}
         filtredTodos={filtredTodos}
         onDeleteAll={deleteAll}
         onChangeFilter={changeFilter}
