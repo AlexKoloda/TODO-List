@@ -146,13 +146,22 @@ li .main__submit {
   .main__input{
     box-shadow: inset 0 100px 0 0 rgb(177 209 242);
     color: white;
-    transition: 0.5
+    transition: 0.5s;
   }
 
   .main__checkbox {
     color: white;
-    transition: 0.4s;
+    transition: 0.5s;
     background-color: white;
+  }
+
+  .main__input--completed{
+    text-decoration: line-through;
+    text-emphasis-color: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 100px 0 0 rgb(177 209 242);
+    color: white;
+    transition: 0.5s;
+  
   }
 }
 
@@ -192,7 +201,26 @@ li .main__submit {
   padding: 5px;
   text-align: start;
 }
+.main__input--completed {
+  padding: 10px;
+  outline: none;
+  border: none;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 30px;
+  text-align: center;
+  transition: 0.5s;
+  text-decoration: line-through;
+  text-emphasis-color: rgba(0, 0, 0, 0.2);
+}
 
+.main__input--completed:hover {
+  text-decoration: line-through;
+  text-emphasis-color: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 100px 0 0 rgb(177 209 242);
+  color: white;
+  transition: 0.5s;
+
+}
 .main__text--completed {
   text-decoration: line-through;
   text-emphasis-color: rgba(0, 0, 0, 0.2);

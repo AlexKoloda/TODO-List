@@ -27,14 +27,14 @@ const TodoApp = () => {
   };
 
   const changeTodos = (id) => {
-    const completeTodos = todos.map((todo) => {
+    const completedTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, isCompleted: !todo.isCompleted };
       }
       return todo;
     });
 
-    setTodos(completeTodos);
+    setTodos(completedTodos);
   };
 
   const filterTodos = () => {
@@ -54,6 +54,7 @@ const TodoApp = () => {
   };
 
   const handleEditTodos = (todo) => {
+    console.log(todo)
     const editedTodos = todos.map((t) => {
       if (t.id === todo.id) {
         return todo;
@@ -61,6 +62,7 @@ const TodoApp = () => {
         return t;
       }
     });
+    console.log(editedTodos)
     setTodos(editedTodos);
   };
 
