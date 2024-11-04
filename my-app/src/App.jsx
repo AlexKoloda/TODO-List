@@ -6,27 +6,10 @@ import FooterDescription from "./components/FooterDescription";
 import { useState } from "react";
 
 const TodoApp = () => {
-  const [todos, setTodos] = useState([]);
-  const [curentFilter, setCurrentFilter] = useState("all");
 
-  const handleAddTodos = (newTodos) => {
-    setTodos((prev) => [...prev, newTodos]);
-  };
 
-  const handleDelete = (id) => {
-    const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
-  };
 
-  const deleteAll = () => {
-    setTodos([]);
-  };
-
-  const changeFilter = (buttonId) => {
-    setCurrentFilter(buttonId);
-  };
-
-  const changeTodos = (id) => {
+ /*  const changeTodos = (id) => {
     const completedTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, isCompleted: !todo.isCompleted };
@@ -72,29 +55,23 @@ const TodoApp = () => {
     setTodos(editedTodos);
   };
 
-  const filtredTodos = filterTodos();
-
+  const filtredTodos = filterTodos();  */
+ 
   return (
     <div className="main__container">
       <Header />
       <TodoInput
-        todos={todos}
-        onAddTodos={handleAddTodos}
-        onChangeAllTodos={changeAllTodos}
+
+      /*  onChangeAllTodos={changeAllTodos} */
       />
       <TodoList
-        todos={todos}
-        filtredTodos={filtredTodos}
+
+      /*  filtredTodos={filtredTodos}
         onHandleDelete={handleDelete}
         onChangeTodos={changeTodos}
-        onEditTodos={handleEditTodos}
+        onEditTodos={handleEditTodos} */
       />
-      <Footer
-        todos={todos}
-        filtredTodos={filtredTodos}
-        onDeleteAll={deleteAll}
-        onChangeFilter={changeFilter}
-      />
+      <Footer />
       <FooterDescription />
     </div>
   );

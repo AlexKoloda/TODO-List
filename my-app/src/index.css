@@ -72,11 +72,7 @@ form:hover {
 }
 
 .todo__input:focus {
-  background-color: rgb(238 242 245);
-  
-  .main__submit {
-    background-color: rgb(238 242 245);
-  }
+  background: linear-gradient(180deg, #ffffff, #dfe6ec00);
 
 }
 

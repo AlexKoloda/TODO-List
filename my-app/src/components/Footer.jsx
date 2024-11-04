@@ -1,11 +1,17 @@
 import TodoCount from "./TodoCount";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { deleteAll, changeFilter } from "../store/TodoSlice";
+
 const buttons = [
   { text: "Все", id: "all" },
   { text: "Активные", id: "active" },
   { text: "Завершенные", id: "completed" },
 ];
 
-const Footer = ({ todos, filtredTodos, onDeleteAll, onChangeFilter }) => {
+const Footer = () => {
+  const dispacth = useDispatch();
+  const todos = useSelector((state) => state.todos.todos);
   const amountCompleted = todos.filter((todo) => !todo.isCompleted);
   const length = amountCompleted.length;
 
@@ -18,7 +24,7 @@ const Footer = ({ todos, filtredTodos, onDeleteAll, onChangeFilter }) => {
             <li key={button.id}>
               <button
                 className="footer__button"
-                onClick={() => onChangeFilter(button.id)}
+                onClick={() => dispacth(changeFilter(button.id)) }
               >
                 {button.text}
               </button>
@@ -26,7 +32,10 @@ const Footer = ({ todos, filtredTodos, onDeleteAll, onChangeFilter }) => {
           );
         })}
         <li>
-          <button className="main__submit" onClick={() => onDeleteAll()}>
+          <button
+            className="main__submit"
+            onClick={() => dispacth(deleteAll())}
+          >
             x
           </button>
         </li>

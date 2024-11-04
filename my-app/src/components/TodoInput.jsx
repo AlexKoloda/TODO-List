@@ -1,21 +1,21 @@
 import { useState } from "react";
-let id = 0;
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { addTodos, changeAllTodos } from "../store/TodoSlice";
 
-const TodoInput = ({ onAddTodos, onChangeAllTodos, todos }) => {
+
+const TodoInput = () => {
   const [inputValue, setInputValue] = useState("");
 
-  const handleClick = () => {
+  const todos = useSelector((state) => state.todos.todos);  
+  const dispacth = useDispatch();
+
+  const addTodo = () => {
     if (!inputValue.trim()) {
       return;
     }
 
-    const newTodos = {
-      id: createUniqueId(),
-      text: inputValue,
-      isCompleted: false,
-    };
-
-    onAddTodos(newTodos);
+    dispacth(addTodos(inputValue));
     setInputValue("");
   };
 
@@ -23,25 +23,21 @@ const TodoInput = ({ onAddTodos, onChangeAllTodos, todos }) => {
     setInputValue(event.target.value);
   };
 
-  const createUniqueId = () => {
-    return (id += 1);
-  };
-
   return (
     <>
-      <button
+{/*       <button
         className={!todos.length ? "main__active" : "main__active--visible"}
         onClick={(event) => {
           event.stopPropagation();
-          onChangeAllTodos();
-        }}
+          dispacth(changeAllTodos());
+         }}
       >
         отметить все завершенными
-      </button>
+      </button> */}
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          handleClick();
+          addTodo();
         }}
       >
         <input

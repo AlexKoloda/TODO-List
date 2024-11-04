@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { changeTodos, deleteTodo, editTodos } from "../store/TodoSlice";
 
-const TodoItem = ({ todo, onHandleDelete, onChangeTodos, onEditTodos }) => {
+const TodoItem = ({ todo }) => {
+  
+  const dispacth = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
+  
   let todosText;
 
   if (isEditing) {
@@ -13,10 +18,10 @@ const TodoItem = ({ todo, onHandleDelete, onChangeTodos, onEditTodos }) => {
           }
           value={todo.text}
           onChange={(e) => {
-            onEditTodos({
+           dispacth( editTodos({
               ...todo,
               text: e.target.value,
-            });
+            }));
           }}
         />
       </>
@@ -31,9 +36,7 @@ const TodoItem = ({ todo, onHandleDelete, onChangeTodos, onEditTodos }) => {
         className={
           !todo.isCompleted ? "main__checkbox" : "main__checkbox--check"
         }
-        onClick={() => {
-          onChangeTodos(todo.id);
-        }}
+        onClick={() => dispacth(changeTodos(todo.id))}
       ></div>
       <span
         className={!todo.isCompleted ? "main__text" : "main__text--completed"}
@@ -46,7 +49,7 @@ const TodoItem = ({ todo, onHandleDelete, onChangeTodos, onEditTodos }) => {
       <button
         className="main__delete"
         type="submit"
-        onClick={() => onHandleDelete(todo.id)}
+        onClick={() => dispacth(deleteTodo(todo.id))}
       >
         x
       </button>

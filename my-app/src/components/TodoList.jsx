@@ -1,18 +1,18 @@
+import {useSelector} from 'react-redux';
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ filtredTodos, onHandleDelete, onChangeTodos, onEditTodos }) => {
+const TodoList = () => {
+  const todos = useSelector(state => state.todos.todos);
+ 
   return (
     <section className="main">
       <ul className="main__list">
-        {filtredTodos.map((todo) => {
+        {todos.map((todo) => {          
           return (
             <TodoItem
-              todo={todo}
-              onHandleDelete={onHandleDelete}
-              key={todo.id}
-              onChangeTodos={onChangeTodos}
-              onEditTodos = {onEditTodos}
-            />
+            todo={todo}
+            key={todo.id}            
+          />
           );
         })}
       </ul>
