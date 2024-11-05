@@ -1,4 +1,7 @@
 import { useState } from "react";
+import styles from "./TodoInput.module.scss";
+import cn from "classnames";
+
 let id = 0;
 
 const TodoInput = ({ onAddTodos, onChangeAllTodos, todos }) => {
@@ -30,7 +33,10 @@ const TodoInput = ({ onAddTodos, onChangeAllTodos, todos }) => {
   return (
     <>
       <button
-        className={!todos.length ? "main__active" : "main__active--visible"}
+        className={cn({
+          [styles.main__active]: !todos.length,
+          [styles.main__active__visible]: todos.length,
+        })}
         onClick={(event) => {
           event.stopPropagation();
           onChangeAllTodos();
@@ -39,19 +45,20 @@ const TodoInput = ({ onAddTodos, onChangeAllTodos, todos }) => {
         отметить все завершенными
       </button>
       <form
+        className={styles.form__todo}
         onSubmit={(event) => {
           event.preventDefault();
           handleClick();
         }}
       >
         <input
-          className="todo__input"
+          className={[styles.todo__input]}
           type="text"
           placeholder="Что нужно сделать?"
           value={inputValue}
           onChange={handleChange}
         />
-        <button className="main__submit" type="submit">
+        <button className={styles.main__submit} type="submit">
           OK
         </button>
       </form>

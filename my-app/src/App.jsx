@@ -1,9 +1,10 @@
-import TodoInput from "./components/TodoInput";
-import TodoList from "./components/TodoList";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import FooterDescription from "./components/FooterDescription";
-import { useState } from "react";
+import "./App.css";
+import TodoInput from "./components/input/TodoInput";
+import TodoList from "./components/list/TodoList";
+import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
+import FooterDescription from "./components/footer/FooterDescription";
+import React, { useState } from "react";
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
@@ -38,8 +39,15 @@ const TodoApp = () => {
   };
 
   const changeAllTodos = () => {
+
+    const completeTodos = todos.filter( (todo) => todo.isCompleted)
+
     const completedAllTodos = todos.map((todo) => {
-      return { ...todo, isCompleted: !todo.isCompleted };
+      if (!completeTodos.length) {
+        return { ...todo, isCompleted: true };
+      }
+      
+      return todo;
     });
 
     setTodos(completedAllTodos);
@@ -61,6 +69,25 @@ const TodoApp = () => {
     }
   };
 
+
+
+/*    const filtredTodos2 = () => {
+    switch (curentFilter) {
+      case "all":
+        return todos;
+
+      case "active":
+        return todos.filter((todo) => !todo.isCompleted);
+
+      case "completed":
+        return todos.filter((todo) => todo.isCompleted);
+
+      default:
+        return todos;
+    }
+  }; */
+
+
   const handleEditTodos = (todo) => {
     const editedTodos = todos.map((t) => {
       if (t.id === todo.id) {
@@ -75,7 +102,7 @@ const TodoApp = () => {
   const filtredTodos = filterTodos();
 
   return (
-    <div className="main__container">
+    <div className='main__container'>
       <Header />
       <TodoInput
         todos={todos}

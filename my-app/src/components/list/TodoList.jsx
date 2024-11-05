@@ -1,9 +1,15 @@
-import TodoItem from "./TodoItem";
+import TodoItem from "../item/TodoItem";
+import styles from "./TodoList.module.scss";
 
-const TodoList = ({ filtredTodos, onHandleDelete, onChangeTodos, onEditTodos }) => {
+const TodoList = ({
+  filtredTodos,
+  onHandleDelete,
+  onChangeTodos,
+  onEditTodos,
+}) => {
   return (
-    <section className="main">
-      <ul className="main__list">
+    <section>
+      <ul className={styles.main__list}>
         {filtredTodos.map((todo) => {
           return (
             <TodoItem
@@ -11,7 +17,7 @@ const TodoList = ({ filtredTodos, onHandleDelete, onChangeTodos, onEditTodos }) 
               onHandleDelete={onHandleDelete}
               key={todo.id}
               onChangeTodos={onChangeTodos}
-              onEditTodos = {onEditTodos}
+              onEditTodos={onEditTodos}
             />
           );
         })}

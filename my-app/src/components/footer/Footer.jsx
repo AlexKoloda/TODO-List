@@ -1,23 +1,25 @@
 import TodoCount from "./TodoCount";
+import styles from "../footer/Footer.module.scss";
+
 const buttons = [
   { text: "Все", id: "all" },
   { text: "Активные", id: "active" },
   { text: "Завершенные", id: "completed" },
 ];
 
-const Footer = ({ todos, filtredTodos, onDeleteAll, onChangeFilter }) => {
+const Footer = ({ todos, onDeleteAll, onChangeFilter }) => {
   const amountCompleted = todos.filter((todo) => !todo.isCompleted);
   const length = amountCompleted.length;
 
   return (
-    <nav className="footer__nav">
+    <nav className={styles.footer__nav}>
       <TodoCount length={length} />
-      <ul className="footer__list">
+      <ul className={styles.footer__list}>
         {buttons.map((button) => {
           return (
             <li key={button.id}>
               <button
-                className="footer__button"
+                className={styles.footer__button}
                 onClick={() => onChangeFilter(button.id)}
               >
                 {button.text}
@@ -26,7 +28,10 @@ const Footer = ({ todos, filtredTodos, onDeleteAll, onChangeFilter }) => {
           );
         })}
         <li>
-          <button className="main__submit" onClick={() => onDeleteAll()}>
+          <button
+            className={styles.footer__delete}
+            onClick={() => onDeleteAll()}
+          >
             x
           </button>
         </li>

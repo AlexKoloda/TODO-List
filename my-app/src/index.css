@@ -17,44 +17,14 @@ p {
 
 /* HEADER */
 
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header__title {
-  margin: 0;
-  padding: 40px 0;
-  font-size: 60px;
-  text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.8);
-}
 
 /* /HEADER */
 
 /* MAIN */
+/* 
 
-.main__container {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  max-width: 500px;
-  margin: 0 auto;
-}
 
-form {
-  display: flex;
-  border-bottom: 4px solid rgb(188 54 24);
-  transition: 0.2s;
-}
-
-form:hover {
-  transform: translate(0, -3px);
-  box-shadow: 0px 12px 20px 0px rgb(129 191 255);
-}
-
-.main__active--visible:hover{
+.main__active__visible:hover{
   transform: translate(0, -3px);
   background-color: rgb(189, 54, 24);
   color: white;
@@ -271,13 +241,13 @@ li .main__submit {
   transform: scale(0.8);
   box-shadow: 0px 20px 100px 23px rgb(156 209 255);
   background-color: rgb(242, 249, 255);
-}
+} */
 
 /* /MAIN */
 
 /* FOOTER */
 
-.footer__nav {
+/* .footer__nav {
   display: flex;
   align-items: center;
   margin-top: 20px;
@@ -350,16 +320,16 @@ li .main__submit {
   position: absolute;
   left: 0;
   bottom: 1px;
-  height: 2px; /* Высота линии */
+  height: 2px;
   background-color: rgb(139, 30, 30);
   transition: width 0.3s;
 }
-
+ */
 /* /FOOTER */
 
 /* MODILE */
 
-@media (320px <=width <=900px) {
+/* @media (320px <=width <=900px) {
   body {
     height: 120vh;
   }
@@ -388,5 +358,5 @@ li .main__submit {
     justify-items: center;
   }
 }
-
+ */
 /* /MODILE */
