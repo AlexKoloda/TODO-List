@@ -39,15 +39,14 @@ const TodoApp = () => {
   };
 
   const changeAllTodos = () => {
-
-    const completeTodos = todos.filter( (todo) => todo.isCompleted)
-
     const completedAllTodos = todos.map((todo) => {
-      if (!completeTodos.length) {
-        return { ...todo, isCompleted: true };
+      if(!todo.isCompleted) {
+        return { ...todo, isCompleted: !todo.isCompleted };
       }
-      
-      return todo;
+      if (todo.isCompleted && !todo) {
+        return { ...todo, isCompleted: !todo.isCompleted}
+      }
+       return todo;
     });
 
     setTodos(completedAllTodos);
