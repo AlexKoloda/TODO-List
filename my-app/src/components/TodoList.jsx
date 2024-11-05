@@ -1,8 +1,9 @@
 import {useSelector} from 'react-redux';
 import TodoItem from "./TodoItem";
+import { selectFiltredTodos } from '../store/selectors';
 
 const TodoList = () => {
-  const todos = useSelector(state => state.todos.todos);
+  const todos = useSelector(selectFiltredTodos);
  
   return (
     <section className="main">

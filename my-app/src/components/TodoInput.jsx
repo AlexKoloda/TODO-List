@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTodos, changeAllTodos } from "../store/TodoSlice";
+import { selectFiltredTodos } from "../store/selectors";
 
 
 const TodoInput = () => {
+  const todos = useSelector(selectFiltredTodos);
   const [inputValue, setInputValue] = useState("");
-
-  const todos = useSelector((state) => state.todos.todos);  
   const dispacth = useDispatch();
 
   const addTodo = () => {
@@ -25,7 +24,7 @@ const TodoInput = () => {
 
   return (
     <>
-{/*       <button
+      <button
         className={!todos.length ? "main__active" : "main__active--visible"}
         onClick={(event) => {
           event.stopPropagation();
@@ -33,7 +32,7 @@ const TodoInput = () => {
          }}
       >
         отметить все завершенными
-      </button> */}
+      </button> 
       <form
         onSubmit={(event) => {
           event.preventDefault();

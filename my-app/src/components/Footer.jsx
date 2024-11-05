@@ -1,7 +1,8 @@
 import TodoCount from "./TodoCount";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { deleteAll, changeFilter } from "../store/TodoSlice";
+import { deleteAll} from "../store/TodoSlice";
+import {changeFilter } from "../store/FilterSlice";
 
 const buttons = [
   { text: "Все", id: "all" },
