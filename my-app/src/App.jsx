@@ -8,7 +8,7 @@ import React, { useState } from "react";
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
-  const [curentFilter, setCurrentFilter] = useState("all");
+  const [currentFilter, setCurrentFilter] = useState("all");
 
   const handleAddTodos = (newTodos) => {
     setTodos((prev) => [...prev, newTodos]);
@@ -23,11 +23,11 @@ const TodoApp = () => {
     setTodos([]);
   };
 
-  const changeFilter = (buttonId) => {
+  const toggleFilter = (buttonId) => {
     setCurrentFilter(buttonId);
   };
 
-  const changeTodos = (id) => {
+  const toggleComplete = (id) => {
     const completedTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, isCompleted: !todo.isCompleted };
@@ -38,54 +38,17 @@ const TodoApp = () => {
     setTodos(completedTodos);
   };
 
-  const changeAllTodos = () => {
+  const toggleCompleteAll = () => {
+    const isAllCompleted = todos.find((todo) => !todo.isCompleted);
     const completedAllTodos = todos.map((todo) => {
-      if(!todo.isCompleted) {
-        return { ...todo, isCompleted: !todo.isCompleted };
+      if (todo.isCompleted && isAllCompleted) {
+        return todo;
       }
-      if (todo.isCompleted && !todo) {
-        return { ...todo, isCompleted: !todo.isCompleted}
-      }
-       return todo;
+      return { ...todo, isCompleted: !todo.isCompleted };
     });
 
     setTodos(completedAllTodos);
   };
-
-  const filterTodos = () => {
-    switch (curentFilter) {
-      case "all":
-        return todos;
-
-      case "active":
-        return todos.filter((todo) => !todo.isCompleted);
-
-      case "completed":
-        return todos.filter((todo) => todo.isCompleted);
-
-      default:
-        return todos;
-    }
-  };
-
-
-
-/*    const filtredTodos2 = () => {
-    switch (curentFilter) {
-      case "all":
-        return todos;
-
-      case "active":
-        return todos.filter((todo) => !todo.isCompleted);
-
-      case "completed":
-        return todos.filter((todo) => todo.isCompleted);
-
-      default:
-        return todos;
-    }
-  }; */
-
 
   const handleEditTodos = (todo) => {
     const editedTodos = todos.map((t) => {
@@ -98,28 +61,37 @@ const TodoApp = () => {
     setTodos(editedTodos);
   };
 
-  const filtredTodos = filterTodos();
+  const filteredTodos = todos.filter((todo) => {
+    switch (currentFilter) {
+      case "active":
+        return !todo.isCompleted;
+      case "completed":
+        return todo.isCompleted;
+      default:
+        return todo;
+    }
+  });
 
   return (
-    <div className='main__container'>
+    <div className="main__container">
       <Header />
       <TodoInput
         todos={todos}
         onAddTodos={handleAddTodos}
-        onChangeAllTodos={changeAllTodos}
+        onToggleCompleteAll={toggleCompleteAll}
       />
       <TodoList
         todos={todos}
-        filtredTodos={filtredTodos}
+        filtredTodos={filteredTodos}
         onHandleDelete={handleDelete}
-        onChangeTodos={changeTodos}
+        onToggleComplete={toggleComplete}
         onEditTodos={handleEditTodos}
       />
       <Footer
         todos={todos}
-        filtredTodos={filtredTodos}
+        filtredTodos={filteredTodos}
         onDeleteAll={deleteAll}
-        onChangeFilter={changeFilter}
+        onToggleFilter={toggleFilter}
       />
       <FooterDescription />
     </div>

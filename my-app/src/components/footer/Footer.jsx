@@ -7,7 +7,7 @@ const buttons = [
   { text: "Завершенные", id: "completed" },
 ];
 
-const Footer = ({ todos, onDeleteAll, onChangeFilter }) => {
+const Footer = ({ todos, onDeleteAll, onToggleFilter }) => {
   const amountCompleted = todos.filter((todo) => !todo.isCompleted);
   const length = amountCompleted.length;
 
@@ -20,7 +20,7 @@ const Footer = ({ todos, onDeleteAll, onChangeFilter }) => {
             <li key={button.id}>
               <button
                 className={styles.footer__button}
-                onClick={() => onChangeFilter(button.id)}
+                onClick={() => onToggleFilter(button.id)}
               >
                 {button.text}
               </button>

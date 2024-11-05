@@ -3,7 +3,7 @@ import TextInput from "./TextInput";
 import styles from "./TodoItem.module.scss";
 import cn from "classnames";
 
-const TodoItem = ({ todo, onHandleDelete, onChangeTodos, onEditTodos }) => {
+const TodoItem = ({ todo, onHandleDelete, onToggleComplete, onEditTodos }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSubmitChanges = (text) => {
@@ -20,7 +20,7 @@ const TodoItem = ({ todo, onHandleDelete, onChangeTodos, onEditTodos }) => {
           [styles.main__checkbox__check]: todo.isCompleted,
         })}
         onClick={() => {
-          onChangeTodos(todo.id);
+          onToggleComplete(todo.id);
         }}
       ></div>
       <div

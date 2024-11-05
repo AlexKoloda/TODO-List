@@ -4,7 +4,7 @@ import cn from "classnames";
 
 let id = 0;
 
-const TodoInput = ({ onAddTodos, onChangeAllTodos, todos }) => {
+const TodoInput = ({ onAddTodos, onToggleCompleteAll, todos }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleClick = () => {
@@ -39,7 +39,7 @@ const TodoInput = ({ onAddTodos, onChangeAllTodos, todos }) => {
         })}
         onClick={(event) => {
           event.stopPropagation();
-          onChangeAllTodos();
+          onToggleCompleteAll();
         }}
       >
         отметить все завершенными

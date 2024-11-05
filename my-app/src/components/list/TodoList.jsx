@@ -4,7 +4,7 @@ import styles from "./TodoList.module.scss";
 const TodoList = ({
   filtredTodos,
   onHandleDelete,
-  onChangeTodos,
+  onToggleComplete,
   onEditTodos,
 }) => {
   return (
@@ -16,7 +16,7 @@ const TodoList = ({
               todo={todo}
               onHandleDelete={onHandleDelete}
               key={todo.id}
-              onChangeTodos={onChangeTodos}
+              onToggleComplete={onToggleComplete}
               onEditTodos={onEditTodos}
             />
           );
