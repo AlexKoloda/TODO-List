@@ -35,7 +35,7 @@ const TodoInput = () => {
           dispacth(toggleCompleteAll());
         }}
       >
-        отметить все завершенными
+        отметить все
       </button>
       <form
         className={styles.form__todo}
