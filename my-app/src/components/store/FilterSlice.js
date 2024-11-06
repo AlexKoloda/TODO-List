@@ -6,13 +6,13 @@ const FilterSlice = createSlice({
     name: 'filters',
     initialState,
     reducers: {
-        changeFilter: (state, action) => action.payload,             
+        toggleFilter: (state, action) => action.payload,             
         
     },
 
 });
 
 
-export const {changeFilter} = FilterSlice.actions;
+export const {toggleFilter} = FilterSlice.actions;
 
 export default FilterSlice.reducer;

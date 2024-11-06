@@ -3,7 +3,7 @@ import styles from "../footer/Footer.module.scss";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { deleteAll } from "../store/TodoSlice";
-import { changeFilter } from "../store/FilterSlice";
+import { toggleFilter } from "../store/FilterSlice";
 
 const buttons = [
   { text: "Все", id: "all" },
@@ -26,7 +26,7 @@ const Footer = () => {
             <li key={button.id}>
               <button
                 className={styles.footer__button}
-                onClick={() => dispacth(changeFilter(button.id))}
+                onClick={() => dispacth(toggleFilter(button.id))}
               >
                 {button.text}
               </button>
