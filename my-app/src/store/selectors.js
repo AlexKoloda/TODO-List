@@ -5,7 +5,7 @@ export const selectFilters = state => state.filters;
 
 
 
-export const selectFiltredTodos = createSelector(
+export const selectFilteredTodos  = createSelector(
     selectTodos,
     selectFilters,
     (todos, currentFilter) => {
