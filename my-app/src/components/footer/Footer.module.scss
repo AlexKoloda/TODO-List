@@ -97,3 +97,17 @@
     transform: scale(0.9);
   }
 }
+
+@media (320px <=width <=900px) {
+  .footer {
+    &__nav {
+      flex-direction: column;
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+    }
+  }
+}
