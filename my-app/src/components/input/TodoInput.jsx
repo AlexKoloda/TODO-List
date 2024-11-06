@@ -1,7 +1,7 @@
 import styles from "./TodoInput.module.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTodos } from "../store/TodoSlice";
+import { addTodos } from "../../store/TodoSlice";
 
 const TodoInput = () => {
   const [inputValue, setInputValue] = useState("");

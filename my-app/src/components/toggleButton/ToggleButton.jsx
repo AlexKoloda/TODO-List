@@ -1,8 +1,8 @@
 import styles from "./ToggleButton.module.scss";
 import cn from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleCompleteAll } from "../store/TodoSlice";
-import { selectFiltredTodos } from "../store/selectors";
+import { toggleCompleteAll } from "../../store/TodoSlice";
+import { selectFiltredTodos } from "../../store/selectors";
 
 const ToggleButton = ({ onToggleCompleteAll, todosLength }) => {
   const todos = useSelector(selectFiltredTodos);
@@ -19,7 +19,7 @@ const ToggleButton = ({ onToggleCompleteAll, todosLength }) => {
         dispacth(toggleCompleteAll());
       }}
     >
-      отметить все
+      ✓
     </button>
   );
 };
