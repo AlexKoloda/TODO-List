@@ -41,9 +41,9 @@ const TodoApp = () => {
   };
 
   const toggleCompleteAll = () => {
-    const hasUnComletedTodo = todos.some((todo) => !todo.isCompleted);
+    const uncompleted = todos.some((todo) => !todo.isCompleted);
     const completedAllTodos = todos.map((todo) => {
-      return { ...todo, isCompleted: hasUnComletedTodo? true : false };
+      return { ...todo, isCompleted: uncompleted? true : false };
     });
 
     setTodos(completedAllTodos);
@@ -87,7 +87,6 @@ const TodoApp = () => {
       />
       <Footer
         todos={todos}
-        filtredTodos={filteredTodos}
         onDeleteAll={deleteAll}
         onToggleFilter={toggleFilter}
       />
