@@ -1,7 +1,7 @@
 import styles from "./ToggleButton.module.scss";
 import cn from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleCompleteAll } from "../../store/TodoSlice";
+import { toggleCompleteAll } from "../../store/todoSlice";
 import { selectFiltredTodos } from "../../store/selectors";
 
 const ToggleButton = ({ onToggleCompleteAll, todosLength }) => {
