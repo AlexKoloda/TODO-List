@@ -13,7 +13,7 @@ const ToggleButton = ({ onToggleCompleteAll, todosLength }) => {
         onToggleCompleteAll();
       }}
     >
-      отметить все
+      ✓
     </button>
   );
 };
