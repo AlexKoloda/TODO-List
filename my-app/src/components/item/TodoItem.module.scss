@@ -1,5 +1,5 @@
 .main {
-  &__form {
+  &__item_form {
     display: flex;
     transition: 0.5s;
     border: none;
@@ -59,6 +59,8 @@
     font-size: 30px;
     text-align: center;
     transition: 0.5s;
+    color: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
   }
 
   &__input:focus {
@@ -69,6 +71,9 @@
   &__text {
     padding: 5px;
     text-align: start;
+    color: rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    transition: 0.3s;
   }
 
   &__input__completed {
@@ -81,11 +86,15 @@
     transition: 0.5s;
     text-decoration: line-through;
     text-emphasis-color: rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.7);
+    overflow: hidden;
   }
 
   &__text__completed {
     text-decoration: line-through;
     text-emphasis-color: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: 0.3s;
   }
 
   &__checkbox {
@@ -107,5 +116,14 @@
     transform: scale(0.8);
     box-shadow: 0px 20px 100px 23px rgb(156 209 255);
     background-color: rgb(242, 249, 255);
+  }
+
+  &__text:hover,
+  &__text__completed:hover,
+  &__input__completed:hover,
+  &__input:hover {
+    color: black;
+    transform: scale(1.05);
+    transition: 0.3s;
   }
 }

@@ -4,7 +4,7 @@ import styles from "./TodoItem.module.scss";
 const TextInput = (props) => {
   const [value, setValue] = useState(props.initialValue);
 
-  const onSubmit = (ev) => {
+  const handleSubmit = (ev) => {
     ev.preventDefault();
     if (!value.trim()) {
       return;
@@ -17,7 +17,10 @@ const TextInput = (props) => {
   };
 
   return (
-    <form onSubmit={onSubmit} className={styles.main__form}>
+    <form 
+    className={styles.input_form}
+    onSubmit={handleSubmit} 
+    >
       <input
         className={props.inputClassName}
         value={value}

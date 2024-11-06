@@ -19,18 +19,14 @@ const TodoItem = ({ todo, onHandleDelete, onToggleComplete, onEditTodos }) => {
           [styles.main__checkbox]: !todo.isCompleted,
           [styles.main__checkbox__check]: todo.isCompleted,
         })}
-        onClick={() => {
-          onToggleComplete(todo.id);
-        }}
+        onClick={() => onToggleComplete(todo.id)}
       ></div>
       <div
         className={cn({
           [styles.main__text]: !todo.isCompleted,
           [styles.main__text__completed]: todo.isCompleted,
         })}
-        onDoubleClick={() => {
-          setIsEditing(true);
-        }}
+        onDoubleClick={() => setIsEditing(true)}
       >
         {isEditing ? (
           <TextInput
@@ -57,26 +53,3 @@ const TodoItem = ({ todo, onHandleDelete, onToggleComplete, onEditTodos }) => {
 };
 
 export default TodoItem;
-
-//let todosText;
-
-// if (isEditing) {
-//   todosText = (
-//     <>
-//       <input
-//         className={
-//           !todo.isCompleted ? "main__input" : "main__input--completed"
-//         }
-//         value={todo.text}
-//         onChange={(e) => {
-//           onEditTodos({
-//             ...todo,
-//             text: e.target.value,
-//           });
-//         }}
-//       />
-//     </>
-//   );
-// } else {
-//   todosText = <>{todo.text}</>;
-// }

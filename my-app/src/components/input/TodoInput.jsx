@@ -6,7 +6,8 @@ let id = 0;
 const TodoInput = ({ onAddTodos }) => {
   const [inputValue, setInputValue] = useState("");
 
-  const handleClick = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (!inputValue.trim()) {
       return;
     }
@@ -30,16 +31,12 @@ const TodoInput = ({ onAddTodos }) => {
   };
 
   return (
-    <>
       <form
         className={styles.form__todo}
-        onSubmit={(event) => {
-          event.preventDefault();
-          handleClick();
-        }}
+        onSubmit={handleSubmit}
       >
         <input
-          className={[styles.todo__input]}
+          className={styles.todo__input}
           type="text"
           placeholder="Что нужно сделать?"
           value={inputValue}
@@ -49,7 +46,6 @@ const TodoInput = ({ onAddTodos }) => {
           OK
         </button>
       </form>
-    </>
   );
 };
 
