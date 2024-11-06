@@ -5,3 +5,17 @@
   max-width: 500px;
   margin: 0 auto;
 }
+
+
+@media (320px <=width <=900px) {
+  body {
+    height: 120vh;
+  }
+
+  .main__container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+}

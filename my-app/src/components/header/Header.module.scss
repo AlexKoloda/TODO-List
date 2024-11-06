@@ -12,3 +12,16 @@
     color: rgba(0, 0, 0, 0.8);
   }
 }
+
+@media (320px <=width <=900px) {
+
+  .header {
+
+    &__title {
+      font-size: 40px;
+    }
+
+
+  }
+
+}

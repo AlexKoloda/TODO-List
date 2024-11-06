@@ -73,3 +73,19 @@
   background-color: rgb(189, 54, 24);
   color: white;
 }
+
+
+
+@media (320px <=width <=900px) { 
+
+  .todo__input {
+    font-size: 20px;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+
+
+}
