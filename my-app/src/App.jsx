@@ -5,6 +5,8 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import FooterDescription from "./components/footer/FooterDescription";
 import React, { useState } from "react";
+import ToggleButton from "./components/toggleButton/ToggleButton";
+
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
@@ -75,14 +77,13 @@ const TodoApp = () => {
   return (
     <div className="main__container">
       <Header />
-      <TodoInput
-        todos={todos}
-        onAddTodos={handleAddTodos}
+      <ToggleButton
+        todosLength={todos.length}
         onToggleCompleteAll={toggleCompleteAll}
       />
+      <TodoInput onAddTodos={handleAddTodos} />
       <TodoList
-        todos={todos}
-        filtredTodos={filteredTodos}
+        filteredTodos={filteredTodos}
         onHandleDelete={handleDelete}
         onToggleComplete={toggleComplete}
         onEditTodos={handleEditTodos}

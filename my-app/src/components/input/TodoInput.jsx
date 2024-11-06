@@ -1,10 +1,9 @@
 import { useState } from "react";
 import styles from "./TodoInput.module.scss";
-import cn from "classnames";
 
 let id = 0;
 
-const TodoInput = ({ onAddTodos, onToggleCompleteAll, todos }) => {
+const TodoInput = ({ onAddTodos }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleClick = () => {
@@ -32,18 +31,6 @@ const TodoInput = ({ onAddTodos, onToggleCompleteAll, todos }) => {
 
   return (
     <>
-      <button
-        className={cn({
-          [styles.main__active]: !todos.length,
-          [styles.main__active__visible]: todos.length,
-        })}
-        onClick={(event) => {
-          event.stopPropagation();
-          onToggleCompleteAll();
-        }}
-      >
-        отметить все
-      </button>
       <form
         className={styles.form__todo}
         onSubmit={(event) => {

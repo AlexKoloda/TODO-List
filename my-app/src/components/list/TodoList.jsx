@@ -2,7 +2,7 @@ import TodoItem from "../item/TodoItem";
 import styles from "./TodoList.module.scss";
 
 const TodoList = ({
-  filtredTodos,
+  filteredTodos,
   onHandleDelete,
   onToggleComplete,
   onEditTodos,
@@ -10,7 +10,7 @@ const TodoList = ({
   return (
     <section>
       <ul className={styles.main__list}>
-        {filtredTodos.map((todo) => {
+        {filteredTodos.map((todo) => {
           return (
             <TodoItem
               todo={todo}
