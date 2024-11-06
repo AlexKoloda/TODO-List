@@ -41,12 +41,9 @@ const TodoApp = () => {
   };
 
   const toggleCompleteAll = () => {
-    const isAllCompleted = todos.find((todo) => !todo.isCompleted);
+    const hasUnComletedTodo = todos.some((todo) => !todo.isCompleted);
     const completedAllTodos = todos.map((todo) => {
-      if (todo.isCompleted && isAllCompleted) {
-        return todo;
-      }
-      return { ...todo, isCompleted: !todo.isCompleted };
+      return { ...todo, isCompleted: hasUnComletedTodo? true : false };
     });
 
     setTodos(completedAllTodos);
