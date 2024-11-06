@@ -19,28 +19,30 @@ const TodoSlice = createSlice({
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
 
-    changeTodos(state, action) {
+    toggleComplete(state, action) {
       const currentTodo = state.todos.find(
         (todo) => todo.id === action.payload
       );
       currentTodo.isCompleted = !currentTodo.isCompleted;
-      
-    },
-    
-    changeAllTodos(state, action) {
-      state.todos = state.todos.map((todo) => {
-        return { ...todo, isCompleted: true };
-      });
-       
     },
 
-    editTodos(state, action) {},
-    
+    toggleCompleteAll(state, action) {
+      const isAllCompleted = state.todos.find((todo) => !todo.isCompleted);
+      state.todos = state.todos.map((todo) => {
+        if (todo.isCompleted && isAllCompleted) {
+          return todo;
+        }
+        return { ...todo, isCompleted: !todo.isCompleted };
+      });
+    },
 
     deleteAll(state) {
       state.todos = [];
     },
 
+    editTodos() {
+     
+    },
   },
 });
 
@@ -51,8 +53,8 @@ const createUniqueId = () => {
 export const {
   addTodos,
   deleteTodo,
-  changeTodos,
-  changeAllTodos,
+  toggleComplete,
+  toggleCompleteAll,
   deleteAll,
   changeFilter,
   editTodos,

@@ -1,8 +1,9 @@
+import styles from "./TodoInput.module.scss";
+import cn from "classnames";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodos, changeAllTodos } from "../store/TodoSlice";
+import { addTodos, toggleCompleteAll } from "../store/TodoSlice";
 import { selectFiltredTodos } from "../store/selectors";
-
 
 const TodoInput = () => {
   const todos = useSelector(selectFiltredTodos);
@@ -25,28 +26,32 @@ const TodoInput = () => {
   return (
     <>
       <button
-        className={!todos.length ? "main__active" : "main__active--visible"}
+        className={cn({
+          [styles.main__active]: !todos.length,
+          [styles.main__active__visible]: todos.length,
+        })}
         onClick={(event) => {
           event.stopPropagation();
-          dispacth(changeAllTodos());
-         }}
+          dispacth(toggleCompleteAll());
+        }}
       >
         отметить все завершенными
-      </button> 
+      </button>
       <form
+        className={styles.form__todo}
         onSubmit={(event) => {
           event.preventDefault();
           addTodo();
         }}
       >
         <input
-          className="todo__input"
+          className={styles.todo__input}
           type="text"
           placeholder="Что нужно сделать?"
           value={inputValue}
           onChange={handleChange}
         />
-        <button className="main__submit" type="submit">
+        <button className={styles.main__submit} type="submit">
           OK
         </button>
       </form>

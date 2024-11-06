@@ -1,0 +1,75 @@
+.form__todo {
+  display: flex;
+  border-bottom: 4px solid rgb(188 54 24);
+  transition: 0.2s;
+}
+
+.form__todo:hover {
+  transform: translate(0, -3px);
+  box-shadow: 0px 12px 20px 0px rgb(129 191 255);
+}
+
+.todo__input {
+  flex: 1;
+  padding: 20px;
+  border: none;
+  font-size: 25px;
+  font-style: italic;
+  color: rgb(0 0 0 / 70%);
+  transition: 0.5s;
+  outline: none;
+}
+
+.todo__input:focus {
+  background-color: rgb(238 242 245);
+
+  .main__submit {
+    background-color: rgb(238 242 245);
+  }
+}
+
+.main__submit {
+  font-family: "Cormorant Garamond", serif;
+  padding: 20px;
+  border: none;
+  text-transform: uppercase;
+  font-size: 25px;
+  background-color: white;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.main__submit:hover {
+  background-color: rgb(189, 54, 24);
+  color: white;
+}
+
+.main__submit:active {
+  transform: scale(0.9);
+}
+
+.main__active {
+  visibility: hidden;
+  font-family: "Cormorant Garamond", serif;
+  border: 0;
+  background: white;
+  text-transform: uppercase;
+}
+
+.main__active__visible {
+  visibility: visible;
+  font-family: "Cormorant Garamond", serif;
+  border: 0;
+  background: white;
+  text-transform: uppercase;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.main__active__visible:hover {
+  transform: translate(0, -3px);
+  background-color: rgb(189, 54, 24);
+  color: white;
+}

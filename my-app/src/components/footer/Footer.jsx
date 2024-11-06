@@ -1,8 +1,9 @@
 import TodoCount from "./TodoCount";
+import styles from "../footer/Footer.module.scss";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { deleteAll} from "../store/TodoSlice";
-import {changeFilter } from "../store/FilterSlice";
+import { deleteAll } from "../store/TodoSlice";
+import { changeFilter } from "../store/FilterSlice";
 
 const buttons = [
   { text: "Все", id: "all" },
@@ -17,15 +18,15 @@ const Footer = () => {
   const length = amountCompleted.length;
 
   return (
-    <nav className="footer__nav">
+    <nav className={styles.footer__nav}>
       <TodoCount length={length} />
-      <ul className="footer__list">
+      <ul className={styles.footer__list}>
         {buttons.map((button) => {
           return (
             <li key={button.id}>
               <button
-                className="footer__button"
-                onClick={() => dispacth(changeFilter(button.id)) }
+                className={styles.footer__button}
+                onClick={() => dispacth(changeFilter(button.id))}
               >
                 {button.text}
               </button>
@@ -34,7 +35,7 @@ const Footer = () => {
         })}
         <li>
           <button
-            className="main__submit"
+            className={styles.footer__delete}
             onClick={() => dispacth(deleteAll())}
           >
             x

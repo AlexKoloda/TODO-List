@@ -16,7 +16,7 @@ p {
 }
 
 /* HEADER */
-
+/* 
 .header {
   display: flex;
   justify-content: center;
@@ -29,12 +29,12 @@ p {
   font-size: 60px;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.8);
-}
+} */
 
 /* /HEADER */
 
 /* MAIN */
-
+/* 
 .main__container {
   display: flex;
   flex-direction: column;
@@ -268,11 +268,11 @@ li .main__submit {
   box-shadow: 0px 20px 100px 23px rgb(156 209 255);
   background-color: rgb(242, 249, 255);
 }
-
+ */
 /* /MAIN */
 
 /* FOOTER */
-
+/* 
 .footer__nav {
   display: flex;
   align-items: center;
@@ -346,15 +346,16 @@ li .main__submit {
   position: absolute;
   left: 0;
   bottom: 1px;
-  height: 2px; /* Высота линии */
+  height: 2px;
   background-color: rgb(139, 30, 30);
   transition: width 0.3s;
 }
+ */
 
 /* /FOOTER */
 
 /* MODILE */
-
+/* 
 @media (320px <=width <=900px) {
   body {
     height: 120vh;
@@ -383,6 +384,6 @@ li .main__submit {
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
   }
-}
+} */
 
 /* /MODILE */
