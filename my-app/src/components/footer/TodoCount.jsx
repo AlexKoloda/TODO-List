@@ -1,38 +1,42 @@
 import styles from "../footer/Footer.module.scss";
 
-const TodoCount = ({ length }) => {
-  const getCountText = (length) => {
-    let countText = "";
+const pluralize = (num, [one, some, many]) => {
+  let number = num;
 
-    switch (true) {
-      case length === 0:
-        countText = "задач";
-        break;
+  if (number === null) {
+    return '';
+  }
 
-      case length === 1:
-        countText = "задача";
-        break;
+  number = Number(number);
 
-      case length <= 4:
-        countText = "задачи";
-        break;
-      case (length = 21):
-        countText = "задача";
-        break;
-      case length > 21:
-        countText = "задачи";
-        break;
+  if (Number.isNaN(number)) {
+    return '';
+  }
 
-      default:
-        countText = "задач";
-    }
-    return countText;
-  };
+  number %= 100;
 
+  if (number >= 5 && number <= 20) {
+    return many;
+  }
+
+  number %= 10;
+
+  if (number === 1) {
+    return one;
+  }
+
+  if (number >= 2 && number <= 4) {
+    return some;
+  }
+
+  return many;
+};
+
+const TodoCount = ({length}) => {
   return (
-    <div className={styles.footer__text}>
-      {length} {getCountText(length)}
-    </div>
+    <p className={styles.footer__text}>
+       {length} {pluralize(length, ['задача', 'задачи', 'задач'])}
+    </p>
   );
 };
 
