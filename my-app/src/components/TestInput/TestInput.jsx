@@ -1,7 +1,30 @@
-const TestInput = () => {
+/* import { useState } from "react";
+import styles from "../TodoItem/TodoItem.module.scss";
 
-  return <h1>test</h1>
+const TestInput = (props) => {
+  const [value, setValue] = useState(props.initialValue);
 
-}
+  const onSubmit = (ev) => {
+    ev.preventDefault();
+    if (!value.trim()) {
+      return;
+    }
+    props.onSubmit(value);
+  };
 
-export default TestInput;
+  const handleValueChange = (ev) => {
+    setValue(ev.target.value);
+  };
+
+  return (
+    <form onSubmit={onSubmit} className={styles.main__form}>
+      <input
+        className={props.inputClassName}
+        value={value}
+        onChange={handleValueChange}
+      />
+    </form>
+  );
+};
+
+export default TestInput; */
