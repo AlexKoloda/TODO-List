@@ -8,16 +8,18 @@ const ToggleButton = () => {
   const todos = useSelector(selectFilteredTodos);
   const dispacth = useDispatch();
 
+  const handleClick = (event) => {
+    event.stopPropagation();
+    dispacth(toggleCompleteAll());
+  }
+
   return (
     <button
       className={cn({
         [styles.main__active]: !todos.length,
         [styles.main__active__visible]: todos.length,
       })}
-      onClick={(event) => {
-        event.stopPropagation();
-        dispacth(toggleCompleteAll());
-      }}
+      onClick={handleClick}
     >
       ✓
     </button>

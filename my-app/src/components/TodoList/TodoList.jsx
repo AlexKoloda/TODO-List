@@ -1,5 +1,5 @@
-import TodoItem from "../item/TodoItem";
-import styles from "./TodoList.module.scss";
+import TodoItem from "../TodoItem/TodoItem";
+import styles from "../TodoList/TodoList.module.scss";
 import { useSelector } from "react-redux";
 import { selectFilteredTodos } from "../../store/selectors";
 

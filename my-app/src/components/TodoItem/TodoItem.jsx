@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { toggleComplete, deleteTodo} from "../../store/todoSlice";
+import { toggleComplete, deleteTodo } from "../../store/todoSlice";
 import TextInput from "./TextInput";
 import styles from "./TodoItem.module.scss";
 import cn from "classnames";
@@ -10,10 +10,19 @@ const TodoItem = ({ todo }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSubmitChanges = (text) => {
-  return {
-      ...todo,
-      text,
-    };
+    return {...todo,text};
+  };
+
+  const handleClick = () => {
+    dispacth(toggleComplete(todo.id));
+  };
+
+  const handleDoubleClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleClickDelete = () => {
+    dispacth(deleteTodo(todo.id));
   };
 
   return (
@@ -23,16 +32,14 @@ const TodoItem = ({ todo }) => {
           [styles.main__checkbox]: !todo.isCompleted,
           [styles.main__checkbox__check]: todo.isCompleted,
         })}
-        onClick={() => dispacth(toggleComplete(todo.id))}
+        onClick={handleClick}
       ></div>
       <div
         className={cn({
           [styles.main__text]: !todo.isCompleted,
           [styles.main__text__completed]: todo.isCompleted,
         })}
-        onDoubleClick={() => {
-          setIsEditing(true);
-        }}
+        onDoubleClick={handleDoubleClick}
       >
         {isEditing ? (
           <TextInput
@@ -50,7 +57,7 @@ const TodoItem = ({ todo }) => {
       <button
         className={styles.main__delete}
         type="submit"
-        onClick={() => dispacth(deleteTodo(todo.id))}
+        onClick={handleClickDelete}
       >
         x
       </button>

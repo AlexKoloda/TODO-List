@@ -1,4 +1,4 @@
-import styles from "../footer/Footer.module.scss";
+import styles from "./Footer.module.scss";
 
 const pluralize = (num, [one, some, many]) => {
   const pluralRules = new Intl.PluralRules("ru-RU");

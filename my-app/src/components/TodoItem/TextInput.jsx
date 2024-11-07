@@ -16,7 +16,7 @@ const TextInput = (props) => {
     setValue(ev.target.value);
   };
 
-  return (
+/*   return (
     <form onSubmit={onSubmit} className={styles.main__form}>
       <input
         className={props.inputClassName}
@@ -26,5 +26,15 @@ const TextInput = (props) => {
     </form>
   );
 };
+ */
+
+      return (
+
+        <h1>TEST</h1>
+
+
+      )
+
+}
 
 export default TextInput;

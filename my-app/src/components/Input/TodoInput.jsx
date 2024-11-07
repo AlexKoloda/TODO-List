@@ -1,12 +1,14 @@
+import styles from "./TodoInput.module.scss";
 import { useState } from "react";
-import { useDispatch} from "react-redux";
-import { addTodos} from "../store/TodoSlice";
+import { useDispatch } from "react-redux";
+import { addTodos } from "../../store/todoSlice";
 
 const TodoInput = () => {
   const [inputValue, setInputValue] = useState("");
   const dispacth = useDispatch();
 
-  const addTodo = () => {
+  const addTodo = (event) => {
+    event.preventDefault();
     if (!inputValue.trim()) {
       return;
     }
@@ -20,23 +22,23 @@ const TodoInput = () => {
   };
 
   return (
+    <>
       <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          addTodo();
-        }}
+        className={styles.form__todo}
+        onSubmit={addTodo}
       >
         <input
-          className="todo__input"
+          className={styles.todo__input}
           type="text"
           placeholder="Что нужно сделать?"
           value={inputValue}
           onChange={handleChange}
         />
-        <button className="main__submit" type="submit">
+        <button className={styles.main__submit} type="submit">
           OK
         </button>
       </form>
+    </>
   );
 };
 

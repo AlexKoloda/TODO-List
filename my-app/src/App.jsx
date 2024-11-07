@@ -1,10 +1,10 @@
 import "./App.css";
-import TodoInput from "./components/input/TodoInput";
-import TodoList from "./components/list/TodoList";
-import Footer from "./components/footer/Footer";
-import Header from "./components/header/Header";
-import FooterDescription from "./components/footer/FooterDescription";
-import ToggleButton from "./components/toggleButton/ToggleButton";
+import Header from "./components/Header/Header";
+import ToggleButton from "./components/ToggleButton/ToggleButton";
+import TodoInput from "./components/Input/TodoInput";
+import TodoList from "./components/TodoList/TodoList";
+import FooterDescription from "./components/Footer/FooterDescription";
+import Footer from "./components/Footer/Footer";
 
 const TodoApp = () => {
   return (
