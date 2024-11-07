@@ -2,8 +2,7 @@ import TodoCount from "./TodoCount";
 import styles from "../footer/Footer.module.scss";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { deleteAll } from "../../store/todoSlice";
-import { toggleFilter } from "../../store/filterSlice";
+import { deleteAll, toggleFilter } from "../../store/todoSlice";
 
 const buttons = [
   { text: "Все", id: "all" },

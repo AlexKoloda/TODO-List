@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 export const selectTodos = state => state.todos.todos;
-export const selectFilters = state => state.filters;
+export const selectFilters = state => state.todos.filters;
 
 
 

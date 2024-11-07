@@ -5,6 +5,7 @@ const TodoSlice = createSlice({
   name: "todos",
   initialState: {
     todos: [],
+    filters: "all",
   },
   reducers: {
     addTodos(state, action) {
@@ -33,6 +34,10 @@ const TodoSlice = createSlice({
     });
     },
 
+    toggleFilter (state, action){
+      state.filters = action.payload
+    },
+
     deleteAll(state) {
       state.todos = [];
     },
@@ -47,6 +52,7 @@ const createUniqueId = () => {
 export const {
   addTodos,
   deleteTodo,
+  toggleFilter,
   toggleComplete,
   toggleCompleteAll,
   deleteAll,
@@ -54,3 +60,24 @@ export const {
 } = TodoSlice.actions;
 
 export default TodoSlice.reducer;
+
+
+
+/* import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = 'all';
+
+const FilterSlice = createSlice({
+    name: 'filters',
+    initialState,
+    reducers: {
+        toggleFilter: (state, action) => action.payload,             
+        
+    },
+
+});
+
+
+export const {toggleFilter} = FilterSlice.actions;
+
+export default FilterSlice.reducer; */
