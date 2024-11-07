@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { toggleComplete, deleteTodo, editTodos} from "../../store/todoSlice";
+import { toggleComplete, deleteTodo} from "../../store/todoSlice";
 import TextInput from "./TextInput";
 import styles from "./TodoItem.module.scss";
 import cn from "classnames";
@@ -10,10 +10,10 @@ const TodoItem = ({ todo }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSubmitChanges = (text) => {
-    editTodos({
+  return {
       ...todo,
       text,
-    });
+    };
   };
 
   return (

@@ -37,9 +37,6 @@ const TodoSlice = createSlice({
       state.todos = [];
     },
 
-    editTodos() {
-     
-    },
   },
 });
 
@@ -54,7 +51,6 @@ export const {
   toggleCompleteAll,
   deleteAll,
   changeFilter,
-  editTodos,
 } = TodoSlice.actions;
 
 export default TodoSlice.reducer;
