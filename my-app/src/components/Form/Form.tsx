@@ -20,7 +20,7 @@ const Form: React.FC = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
-// TODO event change 
+
   return (
     <>
       <form className={styles.form__todo} onSubmit={addTodo}>
