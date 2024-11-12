@@ -3,10 +3,7 @@ import { useAppDispatch } from "../../hook";
 import { useState } from "react";
 import { addTodos } from "../../store/todoSlice";
 
-
-
 const Form: React.FC = () => {
-
   const [inputValue, setInputValue] = useState("");
   const dispacth = useAppDispatch();
 
@@ -26,10 +23,7 @@ const Form: React.FC = () => {
 
   return (
     <>
-      <form
-        className={styles.form__todo}
-        onSubmit={addTodo}
-      >
+      <form className={styles.form__todo} onSubmit={addTodo}>
         <input
           className={styles.form__input}
           type="text"
