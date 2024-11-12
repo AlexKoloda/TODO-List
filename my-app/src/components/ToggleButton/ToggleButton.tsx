@@ -8,8 +8,7 @@ const ToggleButton = () => {
   const todos = useSelector(selectFilteredTodos);
   const dispacth = useDispatch();
 
-  const handleClick = (event: { stopPropagation: () => void; }) => {
-    event.stopPropagation();
+  const handleClick = () => {
     dispacth(toggleCompleteAll());
   }
 

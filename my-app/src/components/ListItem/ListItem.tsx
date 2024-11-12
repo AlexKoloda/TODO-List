@@ -5,7 +5,7 @@ import TextInput from "../TextInput/TextInput";
 import styles from "./ListItem.module.scss";
 import cn from "classnames";
 
-
+// todo delete Prototype 
 
 interface ListItemProps {
   todo: {
