@@ -25,13 +25,13 @@ const TextInput: React.FC<TextInputProps> = (props) => {
   };
 
   return (
-    <form onSubmit={onSubmit} className={styles.main__form}>
+    <label onSubmit={onSubmit} className={styles.main__form}>
       <input
         className={props.inputClassName}
         value={value}
         onChange={handleValueChange}
       />
-    </form>
+    </label>
   );
 };
 
