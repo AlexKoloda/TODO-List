@@ -1,21 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { toggleComplete, deleteTodo } from "../../store/todoSlice";
+import { toggleComplete, deleteTodo, Todo } from "../../store/todoSlice";
 import TextInput from "../TextInput/TextInput";
 import styles from "./ListItem.module.scss";
 import cn from "classnames";
 
-// todo delete Prototype 
-
 interface ListItemProps {
-  todo: {
-    id: number,
-    text: string,
-    isCompleted: boolean,
-  },
-  key: number,
+  todo: Todo;
 }
-
 
 const ListItem: React.FC<ListItemProps> = ({ todo }) => {
   const dispacth = useDispatch();
