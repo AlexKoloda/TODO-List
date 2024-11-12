@@ -51,7 +51,7 @@ const todoSlice = createSlice({
     toggleCompleteAll(state) {
       const uncompleted = state.todos.some((todo) => !todo.isCompleted);
       state.todos = state.todos.map((todo) => {
-        return { ...todo, isCompleted: !uncompleted};
+        return { ...todo, isCompleted: uncompleted ? true : false };
       });
     },
 
