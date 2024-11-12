@@ -57,6 +57,7 @@ const todoSlice = createSlice({
     deleteAll(state) {
       state.todos = [];
     },
+
   },
 });
 
