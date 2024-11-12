@@ -17,6 +17,12 @@ const initialState: TodosState = {
   filters: "all",
 };
 
+export enum Filters {
+  all = 'all',
+  active = "active",
+  completed = "completed",
+}
+
 
 const todoSlice = createSlice({
   name: "todos",
@@ -45,12 +51,12 @@ const todoSlice = createSlice({
 
     toggleCompleteAll(state) {
       const uncompleted = state.todos.some((todo) => !todo.isCompleted);
-      state.todos = state.todos.map((todo) => {
+      state.todos.map((todo) => {
         return { ...todo, isCompleted: uncompleted ? true : false };
       });
     },
 
-    toggleFilter(state, action: PayloadAction<string>) {
+    toggleFilter(state, action: PayloadAction<Filters>) {
       state.filters = action.payload;
     },
 

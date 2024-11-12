@@ -1,13 +1,13 @@
 import Count from "../Count/Count";
 import styles from "./Footer.module.scss";
 import { useAppDispatch, useAppSelector } from "../../hook";
-import { deleteAll, toggleFilter } from "../../store/todoSlice";
+import { deleteAll, Filters, toggleFilter } from "../../store/todoSlice";
 import { selectFilteredTodos } from "../../store/selectors";
 
 const buttons = [
-  { text: "Все", id: "all" },
-  { text: "Активные", id: "active" },
-  { text: "Завершенные", id: "completed" },
+  { text: "Все", id: Filters.all },
+  { text: "Активные", id: Filters.active },
+  { text: "Завершенные", id: Filters.completed },
 ];
 
 const Footer = () => {
