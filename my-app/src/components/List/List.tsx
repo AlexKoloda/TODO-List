@@ -3,7 +3,6 @@ import styles from "./List.module.scss";
 import { useAppSelector } from "../../hook";
 import { selectFilteredTodos } from "../../store/selectors";
 
-
 const List: React.FC = () => {
   const todos = useAppSelector(selectFilteredTodos);
   return (
