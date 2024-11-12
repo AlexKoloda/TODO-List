@@ -18,11 +18,10 @@ const initialState: TodosState = {
 };
 
 export enum Filters {
-  all = 'all',
+  all = "all",
   active = "active",
   completed = "completed",
 }
-
 
 const todoSlice = createSlice({
   name: "todos",
@@ -63,7 +62,6 @@ const todoSlice = createSlice({
     deleteAll(state) {
       state.todos = [];
     },
-
   },
 });
 

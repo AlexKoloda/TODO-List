@@ -4,16 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleCompleteAll } from "../../store/todoSlice";
 import { selectFilteredTodos } from "../../store/selectors";
 
-const ToggleButton = () => {
+const ToggleButton: React.FC = () => {
   const todos = useSelector(selectFilteredTodos);
   const dispacth = useDispatch();
 
   const handleClick = () => {
     dispacth(toggleCompleteAll());
-  }
+  };
 
   return (
     <button
+      type="button"
       className={cn({
         [styles.toggle_button__active]: !todos.length,
         [styles.toggle_button__active__visible]: todos.length,
