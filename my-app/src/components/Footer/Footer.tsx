@@ -13,10 +13,8 @@ const buttons = [
 const Footer = () => {
   const dispacth = useAppDispatch();
   const todos = useAppSelector(selectFilteredTodos);
-  const amountCompleted = todos.filter(
-    (todo) => !todo.isCompleted
-  );
-  const length = amountCompleted.length;
+  const length = todos.filter((todo) => !todo.isCompleted).length;
+  
 
   const handleClickDeleteAll = () => {
     dispacth(deleteAll());
