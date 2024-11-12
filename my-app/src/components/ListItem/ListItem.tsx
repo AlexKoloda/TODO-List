@@ -1,21 +1,17 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { toggleComplete, deleteTodo, Todo } from "../../store/todoSlice";
+import { toggleComplete, deleteTodo, Todo,} from "../../store/todoSlice";
 import TextInput from "../TextInput/TextInput";
 import styles from "./ListItem.module.scss";
 import cn from "classnames";
+import { useAppDispatch } from "../../hook";
 
 interface ListItemProps {
   todo: Todo;
 }
 
 const ListItem: React.FC<ListItemProps> = ({ todo }) => {
-  const dispacth = useDispatch();
+  const dispacth = useAppDispatch();
   const [isEditing, setIsEditing] = useState(false);
-
-  const handleSubmitChanges = (text: string) => {
-    return {...todo,text};
-  };
 
   const handleClick = () => {
     dispacth(toggleComplete(todo.id));
@@ -48,7 +44,6 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
         {isEditing ? (
           <TextInput
             initialValue={todo.text}
-            onSubmit={handleSubmitChanges}
             inputClassName={cn({
               [styles.list__input]: !todo.isCompleted,
               [styles.list__input__completed]: todo.isCompleted,
