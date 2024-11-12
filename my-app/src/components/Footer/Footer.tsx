@@ -2,6 +2,7 @@ import Count from "../Count/Count";
 import styles from "./Footer.module.scss";
 import { useAppDispatch, useAppSelector } from "../../hook";
 import { deleteAll, toggleFilter } from "../../store/todoSlice";
+import { selectFilteredTodos } from "../../store/selectors";
 
 const buttons = [
   { text: "Все", id: "all" },
@@ -11,9 +12,9 @@ const buttons = [
 
 const Footer = () => {
   const dispacth = useAppDispatch();
-  const todos = useAppSelector((state) => state.todos.todos);
+  const todos = useAppSelector(selectFilteredTodos);
   const amountCompleted = todos.filter(
-    (todo: { isCompleted: boolean }) => !todo.isCompleted
+    (todo) => !todo.isCompleted
   );
   const length = amountCompleted.length;
 

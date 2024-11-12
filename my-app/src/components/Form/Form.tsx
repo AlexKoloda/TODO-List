@@ -7,7 +7,7 @@ const Form: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
   const dispacth = useAppDispatch();
 
-  const addTodo = (event: any) => {
+  const addTodo = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!inputValue.trim()) {
       return;
@@ -17,10 +17,10 @@ const Form: React.FC = () => {
     setInputValue("");
   };
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
-
+// TODO event change 
   return (
     <>
       <form className={styles.form__todo} onSubmit={addTodo}>

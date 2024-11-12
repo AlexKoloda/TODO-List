@@ -1,7 +1,6 @@
 import styles from "./Count.module.scss";
 import { pluralize } from "../../ util/pluralize";
 
-
 type CountProps = {
   length: number;
 };
