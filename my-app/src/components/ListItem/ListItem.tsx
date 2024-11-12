@@ -12,7 +12,8 @@ interface ListItemProps {
     id: number,
     text: string,
     isCompleted: boolean,
-  }
+  },
+  key: number,
 }
 
 
@@ -37,18 +38,18 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
   };
 
   return (
-    <li className={styles.main__item}>
+    <li className={styles.list__item}>
       <div
         className={cn({
-          [styles.main__checkbox]: !todo.isCompleted,
-          [styles.main__checkbox__check]: todo.isCompleted,
+          [styles.list__checkbox]: !todo.isCompleted,
+          [styles.list__checkbox__check]: todo.isCompleted,
         })}
         onClick={handleClick}
       ></div>
       <div
         className={cn({
-          [styles.main__text]: !todo.isCompleted,
-          [styles.main__text__completed]: todo.isCompleted,
+          [styles.list__text]: !todo.isCompleted,
+          [styles.list__text__completed]: todo.isCompleted,
         })}
         onDoubleClick={handleDoubleClick}
       >
@@ -57,8 +58,8 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
             initialValue={todo.text}
             onSubmit={handleSubmitChanges}
             inputClassName={cn({
-              [styles.main__input]: !todo.isCompleted,
-              [styles.main__input__completed]: todo.isCompleted,
+              [styles.list__input]: !todo.isCompleted,
+              [styles.list__input__completed]: todo.isCompleted,
             })}
           />
         ) : (
@@ -66,11 +67,11 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
         )}
       </div>
       <button
-        className={styles.main__delete}
+        className={styles.list__delete}
         type="submit"
         onClick={handleClickDelete}
       >
-        x
+        ✕
       </button>
     </li>
   );

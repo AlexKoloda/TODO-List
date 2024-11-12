@@ -31,13 +31,13 @@ const Form: React.FC = () => {
         onSubmit={addTodo}
       >
         <input
-          className={styles.todo__input}
+          className={styles.form__input}
           type="text"
           placeholder="Что нужно сделать?"
           value={inputValue}
           onChange={handleChange}
         />
-        <button className={styles.main__submit} type="submit">
+        <button className={styles.form__submit} type="submit">
           OK
         </button>
       </form>

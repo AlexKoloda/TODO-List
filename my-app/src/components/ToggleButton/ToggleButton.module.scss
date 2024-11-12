@@ -1,0 +1,29 @@
+.toggle_button {
+  &__active {
+    visibility: hidden;
+    font-family: "Cormorant Garamond", serif;
+    border: 0;
+    background: white;
+    text-transform: uppercase;
+
+  }
+
+  &__active__visible {
+    visibility: visible;
+    font-family: "Cormorant Garamond", serif;
+    border: 0;
+    background: white;
+    text-transform: uppercase;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-bottom: 1px solid rgb(0 0 0 / 20%);
+  }
+
+  &__active__visible:hover {
+    transform: translate(0, -3px);
+    background-color: rgb(189, 54, 24);
+    color: white;
+  }
+}

@@ -1,16 +1,16 @@
 import ListItem from "../ListItem/ListItem";
 import styles from "./List.module.scss";
 import { useAppSelector } from "../../hook";
-/* import { selectFilteredTodos } from "../../store/selectors"; */
+import { selectFilteredTodos } from "../../store/selectors";
+import { Todo } from "../../store/todoSlice";
 
 const List: React.FC = () => {
-  const todos = useAppSelector(state => state.todos.todos)
-
+  const todos: Todo[] = useAppSelector(selectFilteredTodos);
   return (
     <section>
-      <ul className={styles.main__list}>
+      <ul className={styles.list}>
         {todos.map((todo) => {
-          return <ListItem todo={todo} />;
+          return <ListItem key={todo.id} todo={todo} />;
         })}
       </ul>
     </section>
