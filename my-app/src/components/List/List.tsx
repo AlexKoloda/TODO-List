@@ -2,10 +2,10 @@ import ListItem from "../ListItem/ListItem";
 import styles from "./List.module.scss";
 import { useAppSelector } from "../../hook";
 import { selectFilteredTodos } from "../../store/selectors";
-import { Todo } from "../../store/todoSlice";
+
 
 const List: React.FC = () => {
-  const todos: Todo[] = useAppSelector(selectFilteredTodos);
+  const todos = useAppSelector(selectFilteredTodos);
   return (
     <section>
       <ul className={styles.list}>
