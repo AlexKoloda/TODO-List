@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { toggleComplete, deleteTodo, Todo,} from "../../store/todoSlice";
-import TextInput from "../TextInput/TextInput";
+import { toggleComplete, deleteTodo, Todo, editTodo } from "../../store/todoSlice";
+import Form from "../Form/Form";
 import styles from "./ListItem.module.scss";
 import cn from "classnames";
 import { useAppDispatch } from "../../hook";
@@ -10,11 +10,11 @@ interface ListItemProps {
 }
 
 const ListItem: React.FC<ListItemProps> = ({ todo }) => {
-  const dispacth = useAppDispatch();
+  const dispatch = useAppDispatch();
   const [isEditing, setIsEditing] = useState(false);
 
   const handleClick = () => {
-    dispacth(toggleComplete(todo.id));
+    dispatch(toggleComplete(todo.id));
   };
 
   const handleDoubleClick = () => {
@@ -22,7 +22,11 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
   };
 
   const handleClickDelete = () => {
-    dispacth(deleteTodo(todo.id));
+    dispatch(deleteTodo(todo.id));
+  };
+
+  const handleSubmitChanges = (text: string) => {
+    dispatch(editTodo({ id: todo.id, text }));
   };
 
   return (
@@ -42,20 +46,19 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
         onDoubleClick={handleDoubleClick}
       >
         {isEditing ? (
-          <TextInput
-            initialValue={todo.text}
-            inputClassName={cn({
-              [styles.list__input]: !todo.isCompleted,
-              [styles.list__input__completed]: todo.isCompleted,
-            })}
-          />
+          <Form
+          onSubmitChange={handleSubmitChanges} 
+          initialValue={todo.text} 
+          inputClassName={styles.list__input} 
+          buttonClassName={styles.list__button} 
+        />
         ) : (
           todo.text
         )}
       </div>
       <button
         className={styles.list__delete}
-        type="submit"
+        type="button"
         onClick={handleClickDelete}
       >
         ✕
