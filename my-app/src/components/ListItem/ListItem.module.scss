@@ -122,7 +122,10 @@
   &__input__completed:hover,
   &__input:hover {
     color: black;
-    transform: scale(1.02);
     transition: 0.2s;
+  }
+
+  &__button{
+    visibility: hidden;
   }
 }
