@@ -1,41 +1,54 @@
+import React, { useState } from "react";
 import styles from "./Form.module.scss";
-import { useAppDispatch } from "../../hook";
-import { useState } from "react";
-import { addTodos } from "../../store/todoSlice";
 
-const Form: React.FC = () => {
-  const [inputValue, setInputValue] = useState("");
-  const dispacth = useAppDispatch();
+interface FormProps {
+  onAddTodo?: (inputValue: string) => void;
+  initialValue?: string;
+  onSubmitChange?: (text: string) => void;
+  inputClassName?: string;
+  buttonClassName?: string;
+}
 
-  const addTodo = (event: React.FormEvent<HTMLFormElement>) => {
+const Form: React.FC<FormProps> = (props) => {
+  const [inputValue, setInputValue] = useState(props.initialValue || "");
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!inputValue.trim()) {
-      return;
-    }
 
-    dispacth(addTodos(inputValue));
-    setInputValue("");
+    if (inputValue.trim()) {
+
+      if (props.onSubmitChange) {
+        props.onSubmitChange(inputValue);
+        return;
+      }
+
+      if (props.onAddTodo) {
+        props.onAddTodo(inputValue);
+        setInputValue("");
+      }
+    }
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
   return (
-    <>
-      <form className={styles.form__todo} onSubmit={addTodo}>
-        <input
-          className={styles.form__input}
-          type="text"
-          placeholder="Что нужно сделать?"
-          value={inputValue}
-          onChange={handleChange}
-        />
-        <button className={styles.form__submit} type="submit">
-          OK
-        </button>
-      </form>
-    </>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Что нужно сделать?"
+        value={inputValue}
+        onChange={handleValueChange}
+        className={props.inputClassName}
+      />
+      <button
+        className={props.buttonClassName}
+        type="submit"
+      >
+        OK
+      </button>
+    </form>
   );
 };
 
