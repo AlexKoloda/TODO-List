@@ -18,7 +18,7 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
   };
 
   const handleDoubleClick = () => {
-    setIsEditing((prev) => !prev);
+    setIsEditing(true);
   };
 
   const handleClickDelete = () => {
@@ -27,6 +27,7 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
 
   const handleSubmitChanges = (text: string) => {
     dispatch(editTodo({ id: todo.id, text }));
+    setIsEditing(false)
   };
 
   return (
@@ -47,7 +48,7 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
       >
         {isEditing ? (
           <Form
-          onSubmitChange={handleSubmitChanges} 
+          onSubmit={handleSubmitChanges} 
           initialValue={todo.text} 
           inputClassName={styles.list__input} 
           buttonClassName={styles.list__button} 
