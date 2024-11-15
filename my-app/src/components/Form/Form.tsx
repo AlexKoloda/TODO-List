@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import styles from "./Form.module.scss";
 
 interface FormProps {
-  onAddTodo?: (inputValue: string) => void;
+  onSubmit?: (text: string) => void;
   initialValue?: string;
-  onSubmitChange?: (text: string) => void;
   inputClassName?: string;
   buttonClassName?: string;
+  buttonTitle?: string;
+  placeholderText?: string;
 }
 
 const Form: React.FC<FormProps> = (props) => {
@@ -16,16 +17,11 @@ const Form: React.FC<FormProps> = (props) => {
     event.preventDefault();
 
     if (inputValue.trim()) {
-
-      if (props.onSubmitChange) {
-        props.onSubmitChange(inputValue);
-        return;
+      if (props.onSubmit) {
+        props.onSubmit(inputValue);
       }
 
-      if (props.onAddTodo) {
-        props.onAddTodo(inputValue);
-        setInputValue("");
-      }
+      setInputValue("");
     }
   };
 
@@ -33,21 +29,26 @@ const Form: React.FC<FormProps> = (props) => {
     setInputValue(event.target.value);
   };
 
+  const handleClickOutside = () => {
+    setInputValue(props.initialValue || "");
+  };
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Что нужно сделать?"
+        placeholder={props.placeholderText}
         value={inputValue}
         onChange={handleValueChange}
         className={props.inputClassName}
+        autoFocus
+        onBlur={handleClickOutside}
       />
-      <button
-        className={props.buttonClassName}
-        type="submit"
-      >
-        OK
-      </button>
+      {props.buttonTitle && (
+        <button className={props.buttonClassName} type="submit">
+          {props.buttonTitle}
+        </button>
+      )}
     </form>
   );
 };
