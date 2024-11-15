@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { toggleComplete, deleteTodo, Todo, editTodo } from "../../store/todoSlice";
+import { toggleComplete,deleteTodo,Todo,editTodo,} from "../../store/todoSlice";
 import Form from "../Form/Form";
 import styles from "./ListItem.module.scss";
 import cn from "classnames";
@@ -27,7 +27,11 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
 
   const handleSubmitChanges = (text: string) => {
     dispatch(editTodo({ id: todo.id, text }));
-    setIsEditing(false)
+    setIsEditing(false);
+  };
+
+  const handleClickOutside = () => {
+    setIsEditing(false);
   };
 
   return (
@@ -48,11 +52,12 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
       >
         {isEditing ? (
           <Form
-          onSubmit={handleSubmitChanges} 
-          initialValue={todo.text} 
-          inputClassName={styles.list__input} 
-          buttonClassName={styles.list__button} 
-        />
+            onSubmit={handleSubmitChanges}
+            initialValue={todo.text}
+            inputClassName={styles.list__input}
+            buttonClassName={styles.list__button}
+            onBlur={handleClickOutside}
+          />
         ) : (
           todo.text
         )}
