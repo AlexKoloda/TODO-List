@@ -63,13 +63,12 @@ const todoSlice = createSlice({
       state.todos = [];
     },
 
-    editTodo: (state, action: PayloadAction<{ id: number; text: string }>) => {
+    editTodo(state, action: PayloadAction<{ id: number; text: string }>) {
       const todo = state.todos.find((todo) => todo.id === action.payload.id);
       if (todo) {
         todo.text = action.payload.text;
       }
     },
-
   },
 });
 

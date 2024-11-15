@@ -18,7 +18,7 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
   };
 
   const handleDoubleClick = () => {
-    setIsEditing(true);
+    setIsEditing((prev) => !prev);
   };
 
   const handleClickDelete = () => {
