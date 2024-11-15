@@ -11,13 +11,14 @@ const Input: React.FC = () => {
   };
 
   return (
-    <>
+    <div className={styles.form__todo}>
+
       <Form
         onAddTodo={addTodo}
         inputClassName={styles.form__input}
         buttonClassName={styles.form__submit}
-      />
-    </>
+        />
+        </div>
   );
 };
 
