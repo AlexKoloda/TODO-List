@@ -40,6 +40,7 @@
     color: rgb(0 0 0 / 70%);
     transition: 0.5s;
     outline: none;
+    
   }
 
   &__input:focus {
@@ -57,6 +58,16 @@
   }
 
   form {
+    display: flex;
     flex-direction: column;
   }
+
+  .form {
+
+    &__submit{
+      border-top-right-radius: 0;
+    }
+  }
+   
+
 }
