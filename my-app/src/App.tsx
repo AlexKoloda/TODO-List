@@ -4,13 +4,14 @@ import FooterDescription from "./components/FooterDescription/FooterDescription"
 import Footer from "./components/Footer/Footer";
 import List from "./components/List/List";
 import ToggleButton from "./components/ToggleButton/ToggleButton";
-import InputTodo from "./components/InputTodo/InputTodo";
+import TodoForm from "./components/TodoForm/TodoForm";
+
 
 function App() {
   return (
     <div className="main__container">
       <Header />
-      <InputTodo />
+      <TodoForm/>
       <ToggleButton />
       <List />
       <Footer />

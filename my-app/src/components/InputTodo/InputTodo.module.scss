@@ -40,7 +40,6 @@
     color: rgb(0 0 0 / 70%);
     transition: 0.5s;
     outline: none;
-    
   }
 
   &__input:focus {
@@ -52,7 +51,7 @@
   }
 }
 
-@media (320px <=width <=900px) {
+@media (320px <=width <=500px) {
   .todo__input {
     font-size: 20px;
   }
@@ -63,11 +62,12 @@
   }
 
   .form {
+    &__todo {
+      display: block;
+    }
 
-    &__submit{
+    &__submit {
       border-top-right-radius: 0;
     }
   }
-   
-
 }
