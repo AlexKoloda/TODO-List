@@ -1,9 +1,13 @@
 import styles from "./FooterDescription.module.scss";
 
-const FooterDescription = () => {
+type FooterType = {
+  text: string;
+}
+
+const FooterDescription: React.FC<FooterType> = (props) => {
   return (
     <div className={styles.footer__description}>
-      <p>Двойной клик редактировать задачи</p>
+      <p>{props.text}</p>
       <p>
         Создано{" "}
         <a href="https://github.com/AlexKoloda" className={styles.footer__description__link}>
