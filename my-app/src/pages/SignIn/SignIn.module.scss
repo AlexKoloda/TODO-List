@@ -1,4 +1,4 @@
-.signIn {
+.sign_in {
   &__title {
     margin: 0;  
     font-size: 40px;
@@ -10,6 +10,12 @@
   &__title::first-letter {
     color: rgb(189, 54, 24);
   }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__input {
     display: flex;
     flex: 1 1;
