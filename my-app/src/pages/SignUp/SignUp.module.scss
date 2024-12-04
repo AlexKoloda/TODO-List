@@ -1,4 +1,4 @@
-.signUp {
+.sign_up {
   &__title {
     margin: 0;
     font-size: 40px;
@@ -10,6 +10,7 @@
   &__title::first-letter {
     color: rgb(189, 54, 24);
   }
+
   &__input {
     display: flex;
     flex: 1 1;
@@ -22,6 +23,11 @@
     transition: 0.5s;
     outline: none;
     box-shadow: 0px 80px 100px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
   }
 
   &__submit {
@@ -47,12 +53,11 @@
   &__submit:active {
     transform: scale(0.9);
   }
-  
+
   &__description {
     text-align: center;
     margin-top: 10px;
     font-size: 14px;
-
   }
 
   &__link {
@@ -63,7 +68,7 @@
   }
 
   &__link:after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     right: 0;
@@ -75,7 +80,7 @@
   }
 
   &__link:hover:after {
-    content: "";
+    content: '';
     width: 100%;
     display: block;
     position: absolute;
