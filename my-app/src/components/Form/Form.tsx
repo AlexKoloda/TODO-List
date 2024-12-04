@@ -1,49 +1,45 @@
-import React, { useState } from "react";
-import styles from "./Form.module.scss";
+import React from 'react';
+import Input, { InputProps } from '../Input/Input';
 
 interface FormProps {
-  onSubmit?: (text: string) => void;
-  onBlur?: () => void;
-  initialValue?: string;
-  inputClassName?: string;
+  inputs: InputProps[];
+  onSubmit?: () => void;
   buttonClassName?: string;
   buttonTitle?: string;
-  placeholderText?: string;
+  formClassName?: string;
 }
 
 const Form: React.FC<FormProps> = (props) => {
-  const [inputValue, setInputValue] = useState(props.initialValue || "");
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement> | React.FormEvent<HTMLButtonElement>) => {
+  console.log(props)
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    if (inputValue.trim()) {
-      if (props.onSubmit) {
-        props.onSubmit(inputValue);
-      }
-
-      setInputValue("");
+    if( !props.onSubmit) {
+   return;   
     }
+    
+    props.onSubmit();
   };
-
-  const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder={props.placeholderText}
-        value={inputValue}
-        onChange={handleValueChange}
-        className={props.inputClassName}
-        autoFocus
-        onBlur={props.onBlur}
-      />
+    <form className={props.formClassName} onSubmit={handleSubmit}>
+      {props.inputs.map((input, index) => {
+        return (
+          <Input
+            name={input.name}
+            key={index}
+            type={input.type}
+            placeholderText={input.placeholderText}
+            initialValue={input.initialValue}
+            inputClassName={input.inputClassName}
+            onBlur={input.onBlur}
+            inputValue={input.inputValue}
+            onValueChange={input.onValueChange}
+          />
+        );
+      })}
+
       {props.buttonTitle && (
-        <button className={props.buttonClassName} type="submit" onSubmit={handleSubmit}>
+        <button className={props.buttonClassName} type='submit'>
           {props.buttonTitle}
         </button>
       )}
