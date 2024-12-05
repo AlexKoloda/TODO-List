@@ -8,13 +8,15 @@ import { Layout } from './components/Layout/Layout';
 //import { AuthRequire } from './hoc/AuthRequire';
 
 function App() {
+
+
   return (
     <Routes>
        <Route path='*' element={<NotFoundPage />} />
        <Route path="/" element={<Layout />}>
        <Route index element={<TodoPage />}/>
-       <Route path='sign-in' element={<SignIn />} />
        <Route path='sign-up' element={<SignUp />} />
+       <Route path='sign-in' element={<SignIn />} />
       </Route>
     </Routes>
   );
@@ -22,3 +24,4 @@ function App() {
 }
 
 export default App;
+
