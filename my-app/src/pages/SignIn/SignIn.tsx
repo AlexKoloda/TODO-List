@@ -1,9 +1,14 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Form from '../../components/Form/Form';
 import styles from './SignIn.module.scss';
 import { useState } from 'react';
+import { useAppDispatch } from '../../hook';
+import { signIn } from '../../store/thunks';
 
 export const SignIn = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -35,10 +40,17 @@ export const SignIn = () => {
     },
   ];
 
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const fromPage = location.state?.from?.pathname || '/sign-up';
+  const handleSubmit = async () => {
+    const user = await dispatch(signIn(data)).unwrap();
+    console.log(user);
+    if (user) {
+      navigate('/');
+    }
+    setData({
+      email: '',
+      password: '',
+    });
+  };
 
   return (
     <div className='main__container'>
@@ -47,10 +59,11 @@ export const SignIn = () => {
         Войдите, что бы пользоваться индивидуальным списком задач.
       </p>
       <Form
-        formClassName = {styles.sign_in__form}
+        formClassName={styles.sign_in__form}
         buttonClassName={styles.sign_in__submit}
         buttonTitle={'Войти'}
         inputs={inputs}
+        onSubmit={handleSubmit}
       />
       <p className={styles.sign_in__description}>
         Если нет аккаунта{' '}
