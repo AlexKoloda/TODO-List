@@ -1,4 +1,6 @@
+//@ts-ignore
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchFilteredTodos } from './thunks';
 let id = 0;
 
 export interface Todo {
@@ -9,7 +11,7 @@ export interface Todo {
 
 export interface TodosState {
   todos: Todo[];
-  filters: string;
+  filters?: string;
 }
 
 const initialState: TodosState = {
@@ -22,6 +24,9 @@ export enum Filters {
   active = "active",
   completed = "completed",
 }
+
+
+
 
 const todoSlice = createSlice({
   name: "todos",
@@ -70,6 +75,11 @@ const todoSlice = createSlice({
       }
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(fetchFilteredTodos.fulfilled, (state, action: PayloadAction<Todo[]>) => {
+     state.todos = action.payload;
+    })
+  },  
 });
 
 const createUniqueId = () => {
