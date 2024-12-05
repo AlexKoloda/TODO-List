@@ -1,9 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, } from 'react-router-dom';
 import Form from '../../components/Form/Form';
 import styles from './SignUp.module.scss';
 import { useState } from 'react';
+import { useAppDispatch } from '../../hook';
+import { signUp } from '../../store/thunks';
 
 export const SignUp = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  
   const [createUser, setCreateUser] = useState({
     firstName: '',
     lastName: '',
@@ -62,6 +67,20 @@ export const SignUp = () => {
     },
   ];
 
+  const handleSubmit = async () => {
+    const user = await dispatch(signUp(createUser)).unwrap();
+    if (user) {
+      navigate('/');
+    }
+    setCreateUser({
+      firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    dateBirth: '',
+    });
+  };
+
   return (
     <div className='main__container'>
       <h1 className={styles.sign_up__title}>Добро пожаловать</h1>
@@ -74,6 +93,7 @@ export const SignUp = () => {
         buttonClassName={styles.sign_up__submit}
         buttonTitle={'Создать'}
         inputs={inputs}
+        onSubmit={handleSubmit}
       />
 
       <p className={styles.sign_up__description}>
