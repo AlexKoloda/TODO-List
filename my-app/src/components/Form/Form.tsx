@@ -10,13 +10,12 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = (props) => {
-  console.log(props)
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if( !props.onSubmit) {
    return;   
     }
-    
     props.onSubmit();
   };
 
