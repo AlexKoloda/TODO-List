@@ -1,8 +1,9 @@
 import styles from './TodoForm.module.scss';
 import { useAppDispatch } from '../../hook';
-import { addTodos } from '../../store/todoSlice';
+import { addTodos } from '../../store/todo/todoSlice';
 import Form from '../Form/Form';
 import { useState } from 'react';
+import { addNewTodo } from '../../store/todo/todoThunks';
 
 const TodoForm: React.FC = () => {
   const [todoText, setTodoText] = useState('');
@@ -14,7 +15,7 @@ const TodoForm: React.FC = () => {
   const dispacth = useAppDispatch();
 
   const addTodo = () => {
-    dispacth(addTodos(todoText));
+    dispacth(addNewTodo(todoText));
     setTodoText('')
   };
 

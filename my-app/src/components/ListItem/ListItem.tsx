@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { toggleComplete,deleteTodo,Todo,editTodo } from '../../store/todoSlice';
+import { toggleComplete, editTodo } from '../../store/todo/todoSlice';
 import Form from '../Form/Form';
 import styles from './ListItem.module.scss';
 import cn from 'classnames';
 import { useAppDispatch } from '../../hook';
+import { Todo } from '../../types/todo';
+import { removeTodo } from '../../store/todo/todoThunks';
 
 interface ListItemProps {
   todo: Todo;
@@ -29,7 +31,7 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
   };
 
   const handleClickDelete = () => {
-    dispatch(deleteTodo(todo.id));
+    dispatch(removeTodo(todo.id));
   };
 
   const handleSubmitChanges = () => {

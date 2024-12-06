@@ -1,7 +1,7 @@
 import Count from "../Count/Count";
 import styles from "./Footer.module.scss";
 import { useAppDispatch, useAppSelector } from "../../hook";
-import { deleteAll, Filters, toggleFilter } from "../../store/todoSlice";
+import { deleteAll, Filters, toggleFilter } from "../../store/todo/todoSlice";
 import { selectFilteredTodos } from "../../store/selectors";
 
 const buttons = [

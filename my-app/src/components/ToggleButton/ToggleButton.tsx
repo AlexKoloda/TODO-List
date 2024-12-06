@@ -1,7 +1,7 @@
 import styles from "./ToggleButton.module.scss";
 import cn from "classnames";
 import { useSelector } from "react-redux";
-import { toggleCompleteAll } from "../../store/todoSlice";
+import { toggleCompleteAll } from "../../store/todo/todoSlice";
 import { selectFilteredTodos } from "../../store/selectors";
 import { useAppDispatch } from "../../hook";
 
