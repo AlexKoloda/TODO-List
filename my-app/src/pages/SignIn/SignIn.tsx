@@ -3,7 +3,9 @@ import Form from '../../components/Form/Form';
 import styles from './SignIn.module.scss';
 import { useState } from 'react';
 import { useAppDispatch } from '../../hook';
-import { signIn } from '../../store/thunks';
+import { signIn } from '../../store/user/userThunks';
+import { fetchTodos } from '../../store/todo/todoThunks';
+
 
 export const SignIn = () => {
   const navigate = useNavigate();
@@ -42,9 +44,10 @@ export const SignIn = () => {
 
   const handleSubmit = async () => {
     const user = await dispatch(signIn(data)).unwrap();
-    console.log(user);
+    
     if (user) {
-      navigate('/');
+    // await dispatch(fetchTodos({filter: "all"}));
+    navigate('/');
     }
     setData({
       email: '',

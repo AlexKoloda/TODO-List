@@ -3,7 +3,7 @@ import Form from '../../components/Form/Form';
 import styles from './SignUp.module.scss';
 import { useState } from 'react';
 import { useAppDispatch } from '../../hook';
-import { signUp } from '../../store/thunks';
+import { signUp } from '../../store/user/userThunks';
 
 export const SignUp = () => {
   const dispatch = useAppDispatch();
