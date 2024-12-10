@@ -20,3 +20,7 @@ export const removeAllTodoApi = () => {
 export const updateTodoApi = (todo: Todo) => {
   return axiosApi.patch('/todo/', todo)
 }
+
+export const toggleStatusApi = () => {
+  return axiosApi.get('/todo/toggle')
+}

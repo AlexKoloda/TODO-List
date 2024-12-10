@@ -1,7 +1,7 @@
 //@ts-ignore
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TodosState } from '../../types/todo';
-import { addNewTodo, changeText, completeStatus, fetchTodos, removeAllTodo, removeTodo } from './todoThunks';
+import { addNewTodo, changeText, completeAll, completeStatus, fetchTodos, removeAllTodo, removeTodo } from './todoThunks';
 
 const initialState: TodosState = {
   todos: [],
@@ -62,10 +62,10 @@ const todoSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTodos.pending, (state, action) => {})
+      
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.todos = action.payload;
       })
-
       .addCase(addNewTodo.fulfilled, (state, action) => {
         state.todos.push(action.payload);
       })
@@ -80,8 +80,14 @@ const todoSlice = createSlice({
           currentTodo.isCompleted = !currentTodo.isCompleted;
         }  
       })
+       .addCase(completeAll.fulfilled, (state, action) => {
+        
+        const uncompleted = state.todos.some((todo) => !todo.isCompleted);
+        state.todos = state.todos.map((todo) => {
+          return { ...todo, isCompleted: uncompleted ? true : false };
+        });
+      }) 
       .addCase(changeText.fulfilled, (state, action) => {
-
         const todo = state.todos.find((todo) => todo.id === action.payload.id);
         console.log(todo?.text)
         console.log(action.payload.text)
