@@ -3,13 +3,15 @@ import Footer from '../../components/Footer/Footer';
 import List from '../../components/List/List';
 import TodoForm from '../../components/TodoForm/TodoForm';
 import ToggleButton from '../../components/ToggleButton/ToggleButton';
-// TODO сделать отображение туду
-export const TodoPage = () => {
-  
-  useEffect(() => {
-    (async )
+import { useAppDispatch } from '../../hook';
+import { fetchTodos } from '../../store/todo/todoThunks';
 
-  }, []);
+export const TodoPage = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTodos({ filter: 'all' }));
+  }, [dispatch]);
 
   return (
     <div className='main__container'>
@@ -19,4 +21,4 @@ export const TodoPage = () => {
       <Footer />
     </div>
   );
-}
+};
