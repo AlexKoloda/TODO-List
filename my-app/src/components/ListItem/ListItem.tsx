@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { toggleComplete, editTodo } from '../../store/todo/todoSlice';
 import Form from '../Form/Form';
 import styles from './ListItem.module.scss';
 import cn from 'classnames';
 import { useAppDispatch } from '../../hook';
 import { Todo } from '../../types/todo';
-import { removeTodo } from '../../store/todo/todoThunks';
+import { changeText, completeStatus, removeTodo } from '../../store/todo/todoThunks';
 
 interface ListItemProps {
   todo: Todo;
@@ -17,13 +16,12 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
   const [text, setText] = useState(todo.text);
 
   const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('click')
     setText(event.currentTarget.value);
   };
 
 
   const handleClick = () => {
-    dispatch(toggleComplete(todo.id));
+    dispatch(completeStatus(todo));
   };
 
   const handleDoubleClick = () => {
@@ -35,7 +33,8 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
   };
 
   const handleSubmitChanges = () => {
-    dispatch(editTodo({ id: todo.id, text}));
+    console.log({id: todo.id, text, isCompleted: todo.isCompleted})
+    dispatch(changeText({id: todo.id, text, isCompleted: todo.isCompleted}));
     setIsEditing(false);
   };
 

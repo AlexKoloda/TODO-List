@@ -58,7 +58,7 @@ export const changeText = createAsyncThunk (
     todo = {
       id: todo.id,
       text: todo.text,
-      isCompleted: !todo.isCompleted,
+      isCompleted: todo.isCompleted,
     }
     const { data } = await updateTodoApi(todo);
     return data;

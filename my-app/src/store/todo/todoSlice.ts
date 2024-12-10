@@ -81,7 +81,10 @@ const todoSlice = createSlice({
         }  
       })
       .addCase(changeText.fulfilled, (state, action) => {
+
         const todo = state.todos.find((todo) => todo.id === action.payload.id);
+        console.log(todo?.text)
+        console.log(action.payload.text)
       if (todo) {
         todo.text = action.payload.text;
       }
