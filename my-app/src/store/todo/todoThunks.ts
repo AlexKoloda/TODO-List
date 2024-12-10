@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Todo, UserTodo } from '../../types/todo';
+import { Todo } from '../../types/todo';
 import {deleteAll } from './todoSlice';
 import { addNewTodoApi, getTodosApi, removeAllTodoApi, removeTodoApi, updateTodoApi } from '../../api/todoApi';
 
