@@ -1,10 +1,13 @@
 export interface User {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
+  firstName: string;
+  lastName: string;
+  email: string;
   password?: string;
-  dateBirth?: string;
+  dateBirth: string;
+  id: number;
 }
+
+export type UserSignUp = Omit<User, 'id'>;
 
 export interface UserSignIn {
   email: string;
@@ -12,5 +15,5 @@ export interface UserSignIn {
 }
 
 export interface UserState {
-  users: User;
+  users: User | null;
 }

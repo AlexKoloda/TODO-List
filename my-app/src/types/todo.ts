@@ -6,7 +6,7 @@ export interface Todo {
 
 export interface TodosState {
   todos: Todo[];
-  filters?: string;
+  filters: string;
   errors: string | null,
 }
 
