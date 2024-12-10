@@ -4,8 +4,6 @@ import styles from './SignIn.module.scss';
 import { useState } from 'react';
 import { useAppDispatch } from '../../hook';
 import { signIn } from '../../store/user/userThunks';
-import { fetchTodos } from '../../store/todo/todoThunks';
-
 
 export const SignIn = () => {
   const navigate = useNavigate();
@@ -46,7 +44,6 @@ export const SignIn = () => {
     const user = await dispatch(signIn(data)).unwrap();
     
     if (user) {
-    // await dispatch(fetchTodos({filter: "all"}));
     navigate('/');
     }
     setData({
