@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Todo } from '../../types/todo';
 import {deleteAll } from './todoSlice';
-import { addNewTodoApi, getTodosApi, removeAllTodoApi, removeTodoApi, updateTodoApi } from '../../api/todoApi';
+import { addNewTodoApi, getTodosApi, removeAllTodoApi, removeTodoApi, toggleStatusApi, updateTodoApi } from '../../api/todoApi';
 
 export const fetchTodos = createAsyncThunk<Todo[], { filter: string }>(
   'todos/fetchTodos',
@@ -41,26 +41,34 @@ export const removeAllTodo = createAsyncThunk(
 
 export const completeStatus = createAsyncThunk(
   'todos/completeStatus',
-  async (todo: Todo ) => { 
+  async (todo: Todo) => {
     todo = {
       id: todo.id,
       text: todo.text,
       isCompleted: !todo.isCompleted,
-    }
+    };
     const { data } = await updateTodoApi(todo);
     return data;
   }
 );
 
-export const changeText = createAsyncThunk (
+export const completeAll = createAsyncThunk(
+  'todos/completeAll',
+  async () => {
+    const { data } = await toggleStatusApi();
+    return data;
+  }
+);
+
+export const changeText = createAsyncThunk(
   'todos/changeText',
-  async ( todo: Todo ) => {
+  async (todo: Todo) => {
     todo = {
       id: todo.id,
       text: todo.text,
       isCompleted: todo.isCompleted,
-    }
+    };
     const { data } = await updateTodoApi(todo);
     return data;
   }
-)
+);
