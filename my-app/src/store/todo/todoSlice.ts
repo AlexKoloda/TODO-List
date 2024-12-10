@@ -1,7 +1,7 @@
 //@ts-ignore
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TodosState } from '../../types/todo';
-import { fetchTodos } from './todoThunks';
+import { addNewTodo, changeText, completeStatus, fetchTodos, removeAllTodo, removeTodo } from './todoThunks';
 
 const initialState: TodosState = {
   todos: [],
@@ -21,10 +21,10 @@ const todoSlice = createSlice({
   reducers: {
     addTodos(state, action) {
       state.todos.push(action.payload);
-      console.log(state.todos)
     },
 
     deleteTodo(state, action: PayloadAction<number>) {
+      debugger;
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
 
@@ -65,10 +65,40 @@ const todoSlice = createSlice({
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.todos = action.payload;
       })
+
+      .addCase(addNewTodo.fulfilled, (state, action) => {
+        state.todos.push(action.payload);
+      })
+      .addCase(removeTodo.fulfilled, (state, action) => {
+        state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+      })     
+      .addCase(completeStatus.fulfilled, (state, action) => {
+        const currentTodo = state.todos.find(
+          (todo) => todo.id === action.payload.id
+        );
+        if (currentTodo) {
+          currentTodo.isCompleted = !currentTodo.isCompleted;
+        }  
+      })
+      .addCase(changeText.fulfilled, (state, action) => {
+        const todo = state.todos.find((todo) => todo.id === action.payload.id);
+      if (todo) {
+        todo.text = action.payload.text;
+      }
+      })
+
       .addCase(fetchTodos.rejected, (state, action) => {
         state.errors = action.payload as string;
         console.log(action.error as string);
-      })      
+      })   
+      .addCase(removeTodo.rejected, (state, action) => {
+        state.errors = action.payload as string;
+        console.log(action.error.message);
+        //action.meta.requestId
+      })    
+      .addCase(removeAllTodo.rejected, (state, action) => {
+        state.todos = [];
+      })   
   },
 });
 
