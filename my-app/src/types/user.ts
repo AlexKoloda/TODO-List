@@ -12,5 +12,5 @@ export interface UserSignIn {
 }
 
 export interface UserState {
-  users: User[];
+  users: User;
 }

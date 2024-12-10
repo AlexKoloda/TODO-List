@@ -5,7 +5,7 @@ import { signIn, signUp } from './userThunks';
 
 
 const initialState: UserState = {
-  users: [],
+  users: {},
 };
 
 const userSlice = createSlice({
@@ -15,7 +15,12 @@ const userSlice = createSlice({
   }, 
   extraReducers(builder) {
     builder
-    .addCase(signIn.fulfilled, () => console.log("test"))
+    .addCase(signIn.fulfilled, (state, action) => {
+      if (action.payload) {
+        state.users = action.payload;
+      }
+
+    })
     .addCase(signUp.fulfilled, () => console.log("test"))
   },
 })
