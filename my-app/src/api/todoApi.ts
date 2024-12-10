@@ -1,17 +1,22 @@
-import { Filters } from '../store/todo/todoSlice';
-import { UserTodo } from '../types/todo';
+import { Todo, UserTodo } from '../types/todo';
 import { axiosApi } from './axios'
-// TODO Не работает, типизировать и подключить в санки
-export const getTodosApi = (params: Filters) => {
-  return axiosApi.get<UserTodo[]>('/todo', {params})
+
+export const getTodosApi = (params: {filter: string}) => {
+  return axiosApi.get<Todo[]>('/todo', {params})
 }
 
-export const addNewTodoApi = () => {
-  return axiosApi.post('/todo/create')
+export const addNewTodoApi = (todo: UserTodo) => {
+  return axiosApi.post<Todo>('/todo/create', todo)
 }
 
-/* export const signUpApi = (p0: string, body: User) => {
-  return axiosApi.post<{user: User}>(`auth/sign-up`, body)
+export const removeTodoApi = (todoId: number) => {
+  return axiosApi.delete<Todo>(`/todo/${todoId}`)
 }
 
- */
+export const removeAllTodoApi = () => {
+  return axiosApi.delete(`/todo/all`)
+}
+
+export const updateTodoApi = (todo: Todo) => {
+  return axiosApi.patch('/todo/', todo)
+}

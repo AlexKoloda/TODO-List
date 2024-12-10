@@ -1,8 +1,9 @@
 import Count from "../Count/Count";
 import styles from "./Footer.module.scss";
 import { useAppDispatch, useAppSelector } from "../../hook";
-import { deleteAll, Filters, toggleFilter } from "../../store/todo/todoSlice";
+import { Filters, toggleFilter } from "../../store/todo/todoSlice";
 import { selectFilteredTodos } from "../../store/selectors";
+import { removeAllTodo } from '../../store/todo/todoThunks';
 
 const buttons = [
   { text: "Все", id: Filters.all },
@@ -16,7 +17,7 @@ const Footer = () => {
   const length = todos.filter((todo) => !todo.isCompleted).length;  
 
   const handleClickDeleteAll = () => {
-    dispacth(deleteAll());
+    dispacth(removeAllTodo());
   };
 
   return (
