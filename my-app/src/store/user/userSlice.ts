@@ -5,7 +5,7 @@ import { signIn, signUp } from './userThunks';
 
 
 const initialState: UserState = {
-  users: {},
+  users: null,
 };
 
 const userSlice = createSlice({
