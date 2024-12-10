@@ -1,9 +1,9 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-import { RootState, UserState } from ".";
+import { RootState } from ".";
 
 export const selectTodos = (state: RootState) => state.todos.todos;
-export const selectUser = (state: UserState) => state.users.users;
+export const selectUser = (state: RootState) => state.users.users;
 export const selectFilters = (state: RootState) => state.todos.filters;
 
 export const selectFilteredTodos = createSelector(
