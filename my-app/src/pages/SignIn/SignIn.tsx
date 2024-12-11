@@ -41,15 +41,20 @@ export const SignIn = () => {
   ];
 
   const handleSubmit = async () => {
-    const user = await dispatch(signIn(data)).unwrap();
-    
-    if (user) {
-    navigate('/');
+    try {
+      const user = await dispatch(signIn(data)).unwrap();
+      
+      if (user) {
+      navigate('/');
+      }
+      setData({
+        email: '',
+        password: '',
+      });
+      
+    } catch (error) {
+      console.log(error)
     }
-    setData({
-      email: '',
-      password: '',
-    });
   };
 
   return (
@@ -64,13 +69,13 @@ export const SignIn = () => {
         buttonTitle={'Войти'}
         inputs={inputs}
         onSubmit={handleSubmit}
-      />
+        />
       <p className={styles.sign_in__description}>
         Если нет аккаунта{' '}
         <Link className={styles.sign_in__link} to='/sign-up'>
           зарегистрируйтесь
         </Link>
       </p>
-    </div>
+    </div>   
   );
 };
