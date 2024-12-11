@@ -1,15 +1,9 @@
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAppSelector } from '../hook';
+import { selectUser } from '../store/selectors';
 
-
-export const AuthRequire = (children: Element) => {
-
-const location = useLocation();
-const authenticate = false; 
-
-if (! authenticate ) {
-  return <Navigate to='/sign-in' state={{from: location }} />
-}
-
-  return children;
-}
-
+export const PrivateRoute = () => {
+  const user = useAppSelector(selectUser);
+  
+  return user ? <Outlet /> : <Navigate to='/sign-in' />;
+};
