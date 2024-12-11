@@ -24,7 +24,6 @@ const todoSlice = createSlice({
     },
 
     deleteTodo(state, action: PayloadAction<number>) {
-      debugger;
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
 
