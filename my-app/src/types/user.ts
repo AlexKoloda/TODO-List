@@ -16,4 +16,5 @@ export interface UserSignIn {
 
 export interface UserState {
   users: User | null;
+  loading: boolean,
 }
