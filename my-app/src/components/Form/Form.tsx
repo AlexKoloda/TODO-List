@@ -27,6 +27,8 @@ const Form: React.FC<FormProps> = (props) => {
             name={input.name}
             key={index}
             type={input.type}
+            autocomplete={input.autocomplete}
+            required={input.required}
             placeholderText={input.placeholderText}
             initialValue={input.initialValue}
             inputClassName={input.inputClassName}
