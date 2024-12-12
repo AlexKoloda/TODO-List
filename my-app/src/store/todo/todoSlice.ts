@@ -19,29 +19,6 @@ const todoSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    addTodos(state, action) {
-      state.todos.push(action.payload);
-    },
-
-    deleteTodo(state, action: PayloadAction<number>) {
-      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
-    },
-
-    toggleComplete(state, action: PayloadAction<number>) {
-      const currentTodo = state.todos.find(
-        (todo) => todo.id === action.payload
-      );
-      if (currentTodo) {
-        currentTodo.isCompleted = !currentTodo.isCompleted;
-      }
-    },
-
-    toggleCompleteAll(state) {
-      const uncompleted = state.todos.some((todo) => !todo.isCompleted);
-      state.todos = state.todos.map((todo) => {
-        return { ...todo, isCompleted: uncompleted ? true : false };
-      });
-    },
 
     toggleFilter(state, action: PayloadAction<Filters>) {
       state.filters = action.payload;
@@ -51,12 +28,6 @@ const todoSlice = createSlice({
       state.todos = [];
     },
 
-    editTodo(state, action: PayloadAction<{ id: number; text: string }>) {
-      const todo = state.todos.find((todo) => todo.id === action.payload.id);
-      if (todo) {
-        todo.text = action.payload.text;
-      }
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -88,8 +59,6 @@ const todoSlice = createSlice({
       }) 
       .addCase(changeText.fulfilled, (state, action) => {
         const todo = state.todos.find((todo) => todo.id === action.payload.id);
-        console.log(todo?.text)
-        console.log(action.payload.text)
       if (todo) {
         todo.text = action.payload.text;
       }
@@ -111,12 +80,7 @@ const todoSlice = createSlice({
 });
 
 export const {
-  editTodo,
-  addTodos,
-  deleteTodo,
   toggleFilter,
-  toggleComplete,
-  toggleCompleteAll,
   deleteAll,
 } = todoSlice.actions;
 
