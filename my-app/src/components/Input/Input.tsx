@@ -1,6 +1,8 @@
 export interface InputProps {
   name?: string;
   type: string;
+  autocomplete?: string,
+  required?: string,
   onBlur?: () => void;
   initialValue?: string;
   inputClassName?: string;
