@@ -14,7 +14,6 @@ export const SignUp = () => {
     lastName: '',
     email: '',
     password: '',
-    dateBirth: '',
   });
 
   const handleChangeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,28 +56,24 @@ export const SignUp = () => {
       inputValue: createUser.password,
       onValueChange: handleChangeValue,
     },
-    {
-      name: 'dateBirth',
-      type: 'text',
-      inputClassName: styles.sign_up__input,
-      placeholderText: 'Введите вашу дату рождения',
-      inputValue: createUser.dateBirth,
-      onValueChange: handleChangeValue,
-    },
   ];
 
   const handleSubmit = async () => {
-    const user = await dispatch(signUp(createUser)).unwrap();
-    if (user) {
-      navigate('/');
+    try {
+      const user = await dispatch(signUp(createUser)).unwrap();
+      if (user) {
+        navigate('/');
+      }
+      setCreateUser({
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      });
+      
+    } catch (error) {
+
     }
-    setCreateUser({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    dateBirth: '',
-    });
   };
 
   return (
