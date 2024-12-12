@@ -33,7 +33,6 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
   };
 
   const handleSubmitChanges = () => {
-    console.log({id: todo.id, text, isCompleted: todo.isCompleted})
     dispatch(changeText({id: todo.id, text, isCompleted: todo.isCompleted}));
     setIsEditing(false);
   };
