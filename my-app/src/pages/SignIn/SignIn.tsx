@@ -4,10 +4,12 @@ import styles from './SignIn.module.scss';
 import { useState } from 'react';
 import { useAppDispatch } from '../../hook';
 import { signIn } from '../../store/user/userThunks';
+import { logOut } from '../../store/user/userSlice';
 
-export const SignIn = () => {
+export const SignIn = () => { 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  dispatch(logOut());
 
   const [data, setData] = useState({
     email: '',
@@ -28,11 +30,15 @@ export const SignIn = () => {
       inputClassName: styles.sign_in__input,
       placeholderText: 'Введите ваш email',
       inputValue: data.email,
+      autocomplete: "email",
+      required: "required",
       onValueChange: handleChangeValue,
     },
     {
       name: 'password',
       type: 'password',
+      required: "required",
+      autocomplete: "current-password",
       inputClassName: styles.sign_in__input,
       placeholderText: 'Введите ваш пароль',
       inputValue: data.password,
