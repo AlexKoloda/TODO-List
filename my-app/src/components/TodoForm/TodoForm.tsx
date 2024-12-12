@@ -1,6 +1,5 @@
 import styles from './TodoForm.module.scss';
 import { useAppDispatch } from '../../hook';
-import { addTodos } from '../../store/todo/todoSlice';
 import Form from '../Form/Form';
 import { useState } from 'react';
 import { addNewTodo } from '../../store/todo/todoThunks';
