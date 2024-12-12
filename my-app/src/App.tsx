@@ -6,56 +6,41 @@ import { SignIn } from './pages/SignIn/SignIn';
 import { SignUp } from './pages/SignUp/SignUp';
 import { Layout } from './components/Layout/Layout';
 import { PrivateRoute } from './hoc/AuthRequire';
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from './hook';
-import { selectUser, selectFilters } from './store/selectors';
-import { fetchTodos } from './store/todo/todoThunks';
+import { useEffect, useState } from 'react';
+import { useAppDispatch } from './hook';
 import { fetchUser } from './store/user/userThunks';
 import Loading from './components/Loading/Loading';
+import React from 'react';
 
-  
-
-function App() {   
-  const user = useAppSelector(selectUser);
-  const loading = useAppSelector( (state) => state.users.loading)
-  const filters = useAppSelector(selectFilters)
+function App() {
+  const [isInitialized, setIsInitialized] = useState(false);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     (async () => {
-      dispatch(fetchUser());
+      if (localStorage.getItem('token')) {
+        await dispatch(fetchUser());
+        setIsInitialized(true);
+      }
     })();
   }, [dispatch]);
 
-  useEffect(() => {
-    if(user){
-      dispatch(fetchTodos({filter: filters}));
-    } 
-  }, [dispatch, filters, user]);
-
-  if (loading) {
-    return (
-      <Loading />
-    )
+  if (!isInitialized) {
+    return <Loading />;
   }
 
   return (
-
     <Routes>
-       <Route path='*' element={<NotFoundPage />} />
-       <Route path='sign-up' element={<SignUp />} />
-       <Route path='sign-in' element={<SignIn />} />
+      <Route path='*' element={<NotFoundPage />} />
+      <Route path='sign-up' element={<SignUp />} />
+      <Route path='sign-in' element={<SignIn />} />
       <Route element={<PrivateRoute />}>
-       <Route path="/" element={<Layout />}>
-       <Route index element={<TodoPage />}/>
-      </Route>
-      
+        <Route path='/' element={<Layout />}>
+          <Route index element={<TodoPage />} />
+        </Route>
       </Route>
     </Routes>
   );
-  
- }
+}
 
 export default App;
-
-
