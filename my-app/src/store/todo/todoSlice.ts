@@ -1,9 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { TodosState } from '../../types/todo';
 import { addNewTodo, changeText, completeAll, completeStatus, fetchTodos, removeAllTodo, removeTodo } from './todoThunks';
+import { getNormalizedData } from '../../ util/normalize';
 
 const initialState: TodosState = {
   todos: [],
+  ids: [],
+  todosNormalize: {},
   filters: 'all',
   errors: null,
 };
@@ -29,13 +32,17 @@ const todoSlice = createSlice({
       .addCase(fetchTodos.pending, (state, action) => {})
       
       .addCase(fetchTodos.fulfilled, (state, action) => {
-        state.todos = action.payload;
+        // state.todos = action.payload;
+        state.todosNormalize = action.payload.todos;
+        state.ids = action.payload.id;
       })
       .addCase(addNewTodo.fulfilled, (state, action) => {
         state.todos.push(action.payload);
       })
       .addCase(removeTodo.fulfilled, (state, action) => {
-        state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+        //state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+        const id = action.payload;
+       
       })     
       .addCase(completeStatus.fulfilled, (state, action) => {
         const currentTodo = state.todos.find(

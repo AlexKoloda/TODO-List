@@ -4,10 +4,14 @@ export interface Todo {
   isCompleted: boolean;
 }
 
+export type todosNormalize = Record<number, Todo>;
+
 export interface TodosState {
   todos: Todo[];
+  ids: number[];
+  todosNormalize: todosNormalize;
   filters: string;
-  errors: string | null,
+  errors: string | null;
 }
 
 export interface UserTodo {

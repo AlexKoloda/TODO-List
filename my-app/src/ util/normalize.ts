@@ -6,7 +6,6 @@ export const getNormalizedData = (list: Todo[]): NormalizedTodos => {
   list.forEach((todo) => {
       normalizedObj[todo.id] = todo;
   })
-
   return normalizedObj;
 };
 
