@@ -2,7 +2,7 @@ import Count from '../Count/Count';
 import styles from './Footer.module.scss';
 import { useAppDispatch, useAppSelector } from '../../hook';
 import { Filters } from '../../store/todo/todoSlice';
-import { selectFilteredTodos } from '../../store/selectors';
+import { selectFilteredTodos, selectIds } from '../../store/selectors';
 import { removeAllTodo } from '../../store/todo/todoThunks';
 import { useSearchParams } from 'react-router-dom';
 
@@ -16,8 +16,8 @@ const Footer = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const dispacth = useAppDispatch();
-  const todos = useAppSelector(selectFilteredTodos);
-  const length = todos.filter((todo) => !todo.isCompleted).length;
+  const ids = useAppSelector(selectIds);
+  //const length = todos.filter((todo) => !todo.isCompleted).length;
 
   const handleClickDeleteAll = () => {
     dispacth(removeAllTodo());
@@ -25,7 +25,7 @@ const Footer = () => {
 
   return (
     <nav className={styles.footer__nav}>
-      <Count length={length} />
+      {<Count length={ids.length} />}
       <ul className={styles.footer__list}>
         {buttons.map((button) => {
           return (
