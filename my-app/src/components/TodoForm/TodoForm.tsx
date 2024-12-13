@@ -8,7 +8,7 @@ const TodoForm: React.FC = () => {
   const [todoText, setTodoText] = useState('');
   
   const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTodoText(event.target.value);
+    setTodoText(event.target.value.trim());
   };
 
   const dispacth = useAppDispatch();

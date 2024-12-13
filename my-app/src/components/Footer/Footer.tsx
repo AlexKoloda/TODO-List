@@ -1,20 +1,23 @@
-import Count from "../Count/Count";
-import styles from "./Footer.module.scss";
-import { useAppDispatch, useAppSelector } from "../../hook";
-import { Filters, toggleFilter } from "../../store/todo/todoSlice";
-import { selectFilteredTodos } from "../../store/selectors";
+import Count from '../Count/Count';
+import styles from './Footer.module.scss';
+import { useAppDispatch, useAppSelector } from '../../hook';
+import { Filters } from '../../store/todo/todoSlice';
+import { selectFilteredTodos } from '../../store/selectors';
 import { removeAllTodo } from '../../store/todo/todoThunks';
+import { useSearchParams } from 'react-router-dom';
 
 const buttons = [
-  { text: "Все", id: Filters.all },
-  { text: "Активные", id: Filters.active },
-  { text: "Завершенные", id: Filters.completed },
+  { text: 'Все', id: Filters.all },
+  { text: 'Активные', id: Filters.active },
+  { text: 'Завершенные', id: Filters.completed },
 ];
 
 const Footer = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const dispacth = useAppDispatch();
   const todos = useAppSelector(selectFilteredTodos);
-  const length = todos.filter((todo) => !todo.isCompleted).length;  
+  const length = todos.filter((todo) => !todo.isCompleted).length;
 
   const handleClickDeleteAll = () => {
     dispacth(removeAllTodo());
@@ -29,7 +32,10 @@ const Footer = () => {
             <li key={button.id}>
               <button
                 className={styles.footer__button}
-                onClick={() => dispacth(toggleFilter(button.id))}
+                onClick={() => {
+                  searchParams.set('filter', button.id);
+                  setSearchParams(searchParams);
+                }}
               >
                 {button.text}
               </button>

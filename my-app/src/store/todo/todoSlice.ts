@@ -1,5 +1,4 @@
-//@ts-ignore
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { TodosState } from '../../types/todo';
 import { addNewTodo, changeText, completeAll, completeStatus, fetchTodos, removeAllTodo, removeTodo } from './todoThunks';
 
@@ -19,10 +18,6 @@ const todoSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-
-    toggleFilter(state, action: PayloadAction<Filters>) {
-      state.filters = action.payload;
-    },
 
     deleteAll(state) {
       state.todos = [];
@@ -80,7 +75,6 @@ const todoSlice = createSlice({
 });
 
 export const {
-  toggleFilter,
   deleteAll,
 } = todoSlice.actions;
 

@@ -6,7 +6,7 @@ import userReducer from "./user/userSlice";
 const store = configureStore({
   reducer: {
     todos: todoReducer,
-    users: userReducer, 
+    user: userReducer, 
   },
 });
 

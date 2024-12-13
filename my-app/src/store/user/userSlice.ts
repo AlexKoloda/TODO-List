@@ -3,16 +3,16 @@ import { UserState } from '../../types/user';
 import { fetchUser, signIn } from './userThunks';
 
 const initialState: UserState = {
-  users: null,
+  user: null,
   loading: true,
 };
 
 const userSlice = createSlice({
-  name: 'users',
+  name: 'user',
   initialState,
   reducers: {
     logOut(state) {
-      state.users = null;
+      state.user = null;
     }
   },
   extraReducers(builder) {
@@ -21,7 +21,7 @@ const userSlice = createSlice({
         if (!action.payload) {
           return;
         }
-        state.users = action.payload;
+        state.user = action.payload;
       })
 
       .addCase(fetchUser.fulfilled, (state, action) => {
@@ -29,7 +29,7 @@ const userSlice = createSlice({
           return;
         }
 
-        state.users = action.payload;
+        state.user = action.payload;
       })
 
   },

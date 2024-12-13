@@ -2,6 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Todo } from '../../types/todo';
 import {deleteAll } from './todoSlice';
 import { addNewTodoApi, getTodosApi, removeAllTodoApi, removeTodoApi, toggleStatusApi, updateTodoApi } from '../../api/todoApi';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { parseError } from '../../ util/parseError';
 
 export const fetchTodos = createAsyncThunk<Todo[], { filter: string }>(
   'todos/fetchTodos',
@@ -11,21 +14,29 @@ export const fetchTodos = createAsyncThunk<Todo[], { filter: string }>(
   }
 );
 
-export const addNewTodo = createAsyncThunk(
+export const addNewTodo = createAsyncThunk<Todo, string>(
   'todos/addNewTodo',
-  async (text: string) => {
-    const todo = {
-      text: text,
-      isCompleted: false,
-    };
-    const { data } = await addNewTodoApi(todo);
-    return data;
+  async (text, { rejectWithValue }) => {
+    try {
+      const todo = {
+        text: text,
+        isCompleted: false,
+      };
+      const { data } = await addNewTodoApi(todo);
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(parseError(error));
+      }
+      const err = error as Error;
+      return rejectWithValue(err.name);
+    }
   }
 );
 
-export const removeTodo = createAsyncThunk(
+export const removeTodo = createAsyncThunk<number, number>(
   'todos/deleteTodo',
-  async (todoId: number) => {
+  async (todoId) => {
     await removeTodoApi(todoId);
     return todoId;
   }
@@ -39,9 +50,9 @@ export const removeAllTodo = createAsyncThunk(
   }
 );
 
-export const completeStatus = createAsyncThunk(
+export const completeStatus = createAsyncThunk<Todo, Todo>(
   'todos/completeStatus',
-  async (todo: Todo) => {
+  async (todo) => {
     todo = {
       id: todo.id,
       text: todo.text,
@@ -52,7 +63,7 @@ export const completeStatus = createAsyncThunk(
   }
 );
 
-export const completeAll = createAsyncThunk(
+export const completeAll = createAsyncThunk<Todo>(
   'todos/completeAll',
   async () => {
     const { data } = await toggleStatusApi();
@@ -60,9 +71,9 @@ export const completeAll = createAsyncThunk(
   }
 );
 
-export const changeText = createAsyncThunk(
+export const changeText = createAsyncThunk<Todo, Todo>(
   'todos/changeText',
-  async (todo: Todo) => {
+  async (todo) => {
     todo = {
       id: todo.id,
       text: todo.text,

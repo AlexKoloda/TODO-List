@@ -35,6 +35,10 @@
     transform: scale(0.9);
   }
 
+  &__button:focus{
+    border:  rgb(189, 54, 24);
+  }
+
   &__delete {
     font-family: "Cormorant Garamond", serif;
     padding: 17px;

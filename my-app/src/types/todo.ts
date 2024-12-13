@@ -14,3 +14,5 @@ export interface UserTodo {
   text: string;
   isCompleted: boolean;
 }
+
+export type NormalizedTodos = Record<number, Todo>;
