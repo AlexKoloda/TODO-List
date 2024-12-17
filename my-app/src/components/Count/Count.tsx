@@ -1,5 +1,5 @@
-import styles from "./Count.module.scss";
-import { pluralize } from "../../ util/pluralize";
+import { pluralize } from '../../ util/pluralize';
+import styled from 'styled-components';
 
 type CountProps = {
   length: number;
@@ -7,10 +7,22 @@ type CountProps = {
 
 const Count: React.FC<CountProps> = ({ length }) => {
   return (
-    <p className={styles.count__text}>
-      {length} {pluralize(length, ["задача", "задачи", "задач"])}
-    </p>
+    <CountStyle>
+      <p className="count__text">
+        {length} {pluralize(length, ['задача', 'задачи', 'задач'])}
+      </p>
+    </CountStyle>
   );
 };
 
 export default Count;
+
+const CountStyle = styled.div`
+  .count {
+    &__text {
+      font-family: 'Cormorant Garamond', serif;
+      padding-left: 10px;
+      font-size: 20px;
+    }
+  }
+`;
