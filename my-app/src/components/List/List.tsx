@@ -1,8 +1,6 @@
 import ListItem from '../ListItem/ListItem';
-import styles from './List.module.scss';
 import { useAppSelector } from '../../hook';
 import { todosListSelector } from '../../store/selectors';
-import styled from 'styled-components';
 import { ListContainer } from './List.style';
 
 const List: React.FC = () => {

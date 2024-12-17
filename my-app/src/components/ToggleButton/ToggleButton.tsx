@@ -1,9 +1,8 @@
-import styles from "./ToggleButton.module.scss";
-import cn from "classnames";
 import { useSelector } from "react-redux";
 import { todosListSelector } from "../../store/selectors";
 import { useAppDispatch } from "../../hook";
 import { completeAll } from '../../store/todo/todoThunks';
+import { ToggleButtonStyled } from './ToggleButton.style';
 
 const ToggleButton: React.FC = () => {
   const todos = useSelector(todosListSelector);
@@ -14,16 +13,17 @@ const ToggleButton: React.FC = () => {
   };
 
   return (
-    <button
-      type="button"
-      className={cn({
-        [styles.toggle_button__active]: !todos.length,
-        [styles.toggle_button__active__visible]: todos.length,
-      })}
+    <ToggleButtonStyled 
+    visible = {Number(todos.length)}
+    >
+     <button 
+      type = "button"
       onClick={handleClick}
+      className='toggle_button'
     >
       ✓
-    </button>
+      </button>
+    </ToggleButtonStyled>
   );
 };
 

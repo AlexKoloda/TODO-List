@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import Form from '../../components/Form/Form';
-// import styles from './SignUp.module.scss';
 import { useState } from 'react';
 import { useAppDispatch } from '../../hook';
 import { signUp } from '../../store/user/userThunks';

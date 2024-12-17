@@ -1,11 +1,20 @@
 import styled from 'styled-components';
 
-export const TodoFormContainer = styled.div`
-
+export const FormContainer = styled.div`
   .form {
+    display: flex;
+    flex: 1;
+
+    &__todo {
       display: flex;
       border-bottom: 4px solid rgb(188 54 24);
       transition: 0.2s;
+    }
+
+    &__todo:hover {
+      transform: translate(0, -3px);
+      box-shadow: 0px 12px 20px 0px rgb(129 191 255);
+    }
 
     &__submit {
       font-family: 'Cormorant Garamond', serif;
@@ -46,8 +55,8 @@ export const TodoFormContainer = styled.div`
         background-color: rgb(238 242 245);
       }
     }
-  }  
-  
+  }
+
   @media (320px <=width <=500px) {
     .todo__input {
       font-size: 20px;
