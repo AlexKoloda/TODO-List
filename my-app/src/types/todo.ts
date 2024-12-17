@@ -4,12 +4,12 @@ export interface Todo {
   isCompleted: boolean;
 }
 
-export type todosNormalize = Record<number, Todo>;
+export type TodosNormalize = Record<number, Todo>;
 
 export interface TodosState {
   todos: Todo[];
   ids: number[];
-  todosNormalize: todosNormalize;
+  todosNormalize: TodosNormalize;
   filters: string;
   errors: string | null;
 }

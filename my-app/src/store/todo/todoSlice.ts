@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { TodosState } from '../../types/todo';
 import { addNewTodo, changeText, completeAll, completeStatus, fetchTodos, removeAllTodo, removeTodo } from './todoThunks';
-import { getNormalizedData } from '../../ util/normalize';
 
 const initialState: TodosState = {
   todos: [],
@@ -23,47 +22,36 @@ const todoSlice = createSlice({
   reducers: {
 
     deleteAll(state) {
-      state.todos = [];
+      state.todosNormalize = [];
     },
 
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(fetchTodos.pending, (state, action) => {})
-      
+    builder      
       .addCase(fetchTodos.fulfilled, (state, action) => {
-        // state.todos = action.payload;
         state.todosNormalize = action.payload.todos;
         state.ids = action.payload.id;
       })
       .addCase(addNewTodo.fulfilled, (state, action) => {
-        state.todos.push(action.payload);
+        state.todosNormalize[action.payload.id] = action.payload;        
+        state.ids.push(action.payload.id)
       })
-      .addCase(removeTodo.fulfilled, (state, action) => {
-        //state.todos = state.todos.filter((todo) => todo.id !== action.payload);
-        const id = action.payload;
-       
+      .addCase(removeTodo.fulfilled, (state, action) => {       
+        delete state.todosNormalize[action.payload]
       })     
       .addCase(completeStatus.fulfilled, (state, action) => {
-        const currentTodo = state.todos.find(
-          (todo) => todo.id === action.payload.id
-        );
-        if (currentTodo) {
-          currentTodo.isCompleted = !currentTodo.isCompleted;
-        }  
+        const id = action.payload.id;
+        state.todosNormalize[id].isCompleted = !state.todosNormalize[id].isCompleted;
       })
-       .addCase(completeAll.fulfilled, (state, action) => {
-        
-        const uncompleted = state.todos.some((todo) => !todo.isCompleted);
-        state.todos = state.todos.map((todo) => {
-          return { ...todo, isCompleted: uncompleted ? true : false };
-        });
+       .addCase(completeAll.fulfilled, (state) => {   
+        const uncompleted = state.ids.some((id) => !state.todosNormalize[id].isCompleted)
+        state.ids.map((id) => {
+          state.todosNormalize[id].isCompleted = uncompleted ? true : false;         
+        })     
       }) 
       .addCase(changeText.fulfilled, (state, action) => {
-        const todo = state.todos.find((todo) => todo.id === action.payload.id);
-      if (todo) {
-        todo.text = action.payload.text;
-      }
+        const id = action.payload.id;
+        state.todosNormalize[id].text = action.payload.text;
       })
 
       .addCase(fetchTodos.rejected, (state, action) => {
@@ -75,7 +63,7 @@ const todoSlice = createSlice({
         console.log(action.error.message);
         //action.meta.requestId
       })    
-      .addCase(removeAllTodo.rejected, (state, action) => {
+      .addCase(removeAllTodo.rejected, (state) => {
         state.todos = [];
       })   
   },

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { NormalizedTodos, Todo } from '../../types/todo';
+import { NormalizedTodos, Todo, TodosNormalize } from '../../types/todo';
 import {deleteAll } from './todoSlice';
 import { addNewTodoApi, getTodosApi, removeAllTodoApi, removeTodoApi, toggleStatusApi, updateTodoApi } from '../../api/todoApi';
 import axios from 'axios';
@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { parseError } from '../../ util/parseError';
 import { getNormalizedData } from '../../ util/normalize';
 
-export const fetchTodos = createAsyncThunk<{todos: any, id: number[]}, { filter: string }>(
+export const fetchTodos = createAsyncThunk<{todos: TodosNormalize, id: number[]}, { filter: string }>(
   'todos/fetchTodos',
   async (params) => {
     const { data } = await getTodosApi(params);
