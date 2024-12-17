@@ -1,15 +1,18 @@
 import { Link, useNavigate } from 'react-router-dom';
 import Form from '../../components/Form/Form';
-import styles from './SignIn.module.scss';
 import { useState } from 'react';
 import { useAppDispatch } from '../../hook';
 import { signIn } from '../../store/user/userThunks';
 import { logOut } from '../../store/user/userSlice';
+import React from 'react';
+import { StyledWrapper } from './SignIn.style';
 
-export const SignIn = () => { 
+const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   dispatch(logOut());
+
+  const [state, setState] = React.useState(false);
 
   const [data, setData] = useState({
     email: '',
@@ -27,19 +30,19 @@ export const SignIn = () => {
     {
       name: 'email',
       type: 'email',
-      inputClassName: styles.sign_in__input,
+      inputClassName: "sign_in__input",
       placeholderText: 'Введите ваш email',
       inputValue: data.email,
-      autocomplete: "email",
-      required: "required",
+      autocomplete: 'email',
+      required: 'required',
       onValueChange: handleChangeValue,
     },
     {
       name: 'password',
       type: 'password',
-      required: "required",
-      autocomplete: "current-password",
-      inputClassName: styles.sign_in__input,
+      required: 'required',
+      autocomplete: 'current-password',
+      inputClassName: "sign_in__input",
       placeholderText: 'Введите ваш пароль',
       inputValue: data.password,
       onValueChange: handleChangeValue,
@@ -49,39 +52,40 @@ export const SignIn = () => {
   const handleSubmit = async () => {
     try {
       const user = await dispatch(signIn(data)).unwrap();
-      
+
       if (user) {
-      navigate('/');
+        navigate('/');
       }
       setData({
         email: '',
         password: '',
       });
-      
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
   return (
-    <div className='main__container'>
-      <h1 className={styles.sign_in__title}> Войти </h1>
-      <p className={styles.sign_in__description}>
+    <StyledWrapper>
+      <h1 className="sign_in__title"> Войти </h1>
+      <p className="sign_in__description">
         Войдите, что бы пользоваться индивидуальным списком задач.
       </p>
       <Form
-        formClassName={styles.sign_in__form}
-        buttonClassName={styles.sign_in__submit}
+        formClassName={"sign_in__form"}
+        buttonClassName={"sign_in__submit"}
         buttonTitle={'Войти'}
         inputs={inputs}
         onSubmit={handleSubmit}
-        />
-      <p className={styles.sign_in__description}>
+      />
+      <p className="sign_in__description">
         Если нет аккаунта{' '}
-        <Link className={styles.sign_in__link} to='/sign-up'>
+        <Link className="sign_in__link" to='/sign-up'>
           зарегистрируйтесь
         </Link>
       </p>
-    </div>   
+    </StyledWrapper>
   );
 };
+
+export default SignIn;

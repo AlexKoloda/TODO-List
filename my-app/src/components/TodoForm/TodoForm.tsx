@@ -1,8 +1,9 @@
-import styles from './TodoForm.module.scss';
+
 import { useAppDispatch } from '../../hook';
 import Form from '../Form/Form';
 import { useState } from 'react';
 import { addNewTodo } from '../../store/todo/todoThunks';
+import { TodoFormContainer } from './TodoForm.style';
 
 const TodoForm: React.FC = () => {
   const [todoText, setTodoText] = useState('');
@@ -19,23 +20,23 @@ const TodoForm: React.FC = () => {
   };
 
   return (
-    <div className={styles.form__todo}>
+    <TodoFormContainer>
       <Form
-      formClassName={styles.form}
+      formClassName="form"
         inputs={[
           {
             type: 'text',
-            inputClassName: styles.form__input,
+            inputClassName:"form__input",
             placeholderText: 'Что нужно сделать?',
             onValueChange: handleValueChange,
             inputValue: todoText,
           },
         ]}
         onSubmit={addTodo}
-        buttonClassName={styles.form__submit}
+        buttonClassName="form__submit"
         buttonTitle={'ок'}
       />
-    </div>
+    </TodoFormContainer>
   );
 };
 

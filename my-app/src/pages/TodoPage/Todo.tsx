@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../hook';
 import { fetchTodos } from '../../store/todo/todoThunks';
 import { useSearchParams } from 'react-router-dom';
 
-export const TodoPage = () => {
+const TodoPage = () => {
   const dispatch = useAppDispatch();
   const [searchParams] = useSearchParams();
   const filter = searchParams.get('filter');
@@ -25,3 +25,5 @@ export const TodoPage = () => {
     </div>
   );
 };
+
+export default TodoPage;

@@ -1,10 +1,10 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { TodoPage } from './pages/TodoPage/Todo';
-import { NotFoundPage } from './pages/NotFound/NotFound';
-import { SignIn } from './pages/SignIn/SignIn';
-import { SignUp } from './pages/SignUp/SignUp';
-import { Layout } from './components/Layout/Layout';
+import  TodoPage  from './pages/TodoPage/Todo';
+import  NotFoundPage  from './pages/NotFound/NotFound';
+import  SignIn  from './pages/SignIn/SignIn';
+import  SignUp  from './pages/SignUp/SignUp';
+import  Layout  from './components/Layout/Layout';
 import { PrivateRoute } from './hoc/AuthRequire';
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from './hook';
@@ -20,8 +20,8 @@ function App() {
     (async () => {
       if (localStorage.getItem('token')) {
         await dispatch(fetchUser());
-        setIsInitialized(true);
       }
+      setIsInitialized(true);
     })();
   }, [dispatch]);
 

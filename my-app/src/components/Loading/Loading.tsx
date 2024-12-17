@@ -1,11 +1,12 @@
-import styles from "./Loading.module.scss"
+import { LoadingContainer } from './Loading.style';
+
 
  const Loading: React.FC = () => {
   return (
-    <div className={styles.loading__box}>
+    <LoadingContainer>
       <h1>Загрузка...</h1>
-      <div className={styles.loading__spinner}></div>
-    </div>
+      <div className="loading__spinner"></div>
+    </LoadingContainer>
   )
 }
 

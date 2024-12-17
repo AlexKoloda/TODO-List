@@ -1,10 +1,10 @@
 import Count from '../Count/Count';
-import styles from './Footer.module.scss';
 import { useAppDispatch, useAppSelector } from '../../hook';
 import { Filters } from '../../store/todo/todoSlice';
-import { selectFilteredTodos, selectIds } from '../../store/selectors';
+import { todosListSelector } from '../../store/selectors';
 import { removeAllTodo } from '../../store/todo/todoThunks';
 import { useSearchParams } from 'react-router-dom';
+import { FooterContainer } from './Footer.style';
 
 const buttons = [
   { text: 'Все', id: Filters.all },
@@ -16,22 +16,23 @@ const Footer = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const dispacth = useAppDispatch();
-  const ids = useAppSelector(selectIds);
-  //const length = todos.filter((todo) => !todo.isCompleted).length;
+  const todos = useAppSelector(todosListSelector);
+  const length = todos.filter((todo) => !todo.isCompleted).length;
 
   const handleClickDeleteAll = () => {
     dispacth(removeAllTodo());
   };
 
   return (
-    <nav className={styles.footer__nav}>
-      {<Count length={ids.length} />}
-      <ul className={styles.footer__list}>
+    <FooterContainer>
+    <nav className="footer__nav">
+      {<Count length={todos.length} />}
+      <ul className="footer__list">
         {buttons.map((button) => {
           return (
             <li key={button.id}>
               <button
-                className={styles.footer__button}
+                className="footer__button"
                 onClick={() => {
                   searchParams.set('filter', button.id);
                   setSearchParams(searchParams);
@@ -44,7 +45,7 @@ const Footer = () => {
         })}
         <li>
           <button
-            className={styles.footer__delete}
+            className="footer__delete"
             onClick={handleClickDeleteAll}
           >
             ✕
@@ -52,6 +53,7 @@ const Footer = () => {
         </li>
       </ul>
     </nav>
+    </FooterContainer>
   );
 };
 

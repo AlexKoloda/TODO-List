@@ -1,21 +1,24 @@
-import styles from "./FooterDescription.module.scss";
+import { FooterDescriptionContainer } from './FooterDescription.style';
 
 type FooterType = {
   text: string;
-}
+};
 
 const FooterDescription: React.FC<FooterType> = (props) => {
   return (
-    <div className={styles.footer__description}>
+    <FooterDescriptionContainer>
       <p>{props.text}</p>
       <p>
-        Создано{" "}
-        <a href="https://github.com/AlexKoloda" className={styles.footer__description__link}>
+        Создано{' '}
+        <a
+          href='https://github.com/AlexKoloda'
+          className='footer__description__link'
+        >
           Алексеем Колодой
         </a>
       </p>
       <p>FUSION Interns</p>
-    </div>
+    </FooterDescriptionContainer>
   );
 };
 

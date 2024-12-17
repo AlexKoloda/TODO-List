@@ -4,7 +4,7 @@ import FooterDescription from '../FooterDescription/FooterDescription'
 
 
 
-export const Layout = () => {
+const Layout = () => {
   return(
     <>
     <Header 
@@ -17,3 +17,5 @@ export const Layout = () => {
     </>
   )
 }
+
+export default Layout;

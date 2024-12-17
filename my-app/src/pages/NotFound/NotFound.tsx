@@ -1,16 +1,20 @@
 import { Link } from 'react-router-dom';
-import styles from './NotFound.module.scss';
+import { ErrorContainer } from './NotFound.style';
 
-export const NotFoundPage = () => {
+
+const NotFoundPage = () => {
   return (
-    <div className={styles.error__notFound}>
-      <h1 className={styles.error__code}>404</h1>
-      <h1 className={styles.error__text}>
+    <ErrorContainer >
+      <h1 className="error__code">404</h1>
+      <h1 className="error__text">
         Упс! Страница не найдена! Перейти{' '}
-        <Link className={styles.error__link} to='/'>
+        <Link className="error__link" to='/'>
           домой.
         </Link>
       </h1>
-    </div>
+    </ErrorContainer>
   );
 };
+
+export default NotFoundPage;
+
